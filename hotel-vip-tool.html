@@ -16,7 +16,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   --border:#2E2E2E;--gold:#C9A84C;--gold-d:#2A2000;--teal:#3ABFB1;--teal-d:#002A27;
   --blue:#5BA3FF;--blue-d:#0A1A2A;
 }
-
+ 
 /* ── HEADER ── */
 .site-header{background:#0A0A0A;border-bottom:2px solid var(--red);padding:.9rem 1.5rem;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100}
 .logo-main{font-size:18px;font-weight:600;letter-spacing:.5px;color:var(--white);line-height:1}
@@ -29,10 +29,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .hdr-sub{font-size:10px;color:var(--gray-d);margin-top:3px}
 .hdr-sub a{color:var(--gold);text-decoration:none}
 .hdr-sub a:hover{text-decoration:underline}
-
+ 
 /* ── PAGE WRAPPER ── */
 .page{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem}
-
+ 
 /* ── TABS ── */
 .tabs{display:flex;background:#0D0D0D;border:0.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1.25rem}
 .tab{flex:1;padding:11px 8px;font-size:10px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;border:none;background:transparent;color:var(--gray-d);cursor:pointer;border-bottom:2px solid transparent;font-family:inherit;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:5px}
@@ -40,7 +40,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .tab:hover{color:var(--off);background:#161616}
 .tab.active{color:var(--red);border-bottom:2px solid var(--red);background:var(--bg)}
 .panel{display:none}.panel.active{display:block}
-
+ 
 /* ── CONTROLS ── */
 .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
 .sw{flex:1;min-width:200px;position:relative}
@@ -52,16 +52,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .fbtn{font-size:10px;padding:8px 13px;border-radius:8px;border:0.5px solid var(--border);background:var(--bg-card);color:var(--gray);cursor:pointer;font-family:inherit;letter-spacing:.5px;text-transform:uppercase;transition:all .15s}
 .fbtn:hover{background:var(--bg-hover);color:var(--white)}
 .fbtn.active{background:var(--red);color:var(--white);border-color:var(--red)}
-
+ 
 /* ── SECTION LABEL ── */
 .sec-lbl{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray-d);margin:1.25rem 0 10px;display:flex;align-items:center;gap:10px}
 .sec-lbl::before{content:'';width:20px;height:1px;background:var(--red);flex-shrink:0}
 .sec-lbl::after{content:'';flex:1;height:0.5px;background:var(--border)}
 .count{font-size:10px;letter-spacing:.5px;color:var(--gray-d);margin-bottom:10px;text-transform:uppercase}
-
+ 
 /* ── GRID ── */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
-
+ 
 /* ── CARD ── */
 .card{background:var(--bg-card);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.1rem;transition:border-color .15s,background .15s;border-left:3px solid transparent;display:flex;flex-direction:column}
 .card:hover{background:var(--bg-hover);border-color:#3A3A3A}
@@ -96,12 +96,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .btn-cmp{color:var(--gray)}
 .btn-cmp.in{background:var(--red-dim);color:var(--red-lt);border-color:var(--red)}
 .no-res{grid-column:1/-1;text-align:center;padding:3rem;color:var(--gray-d);font-size:13px}
-
+ 
 /* ── CARD FINDER ── */
 .cf-label{font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--gray-d);margin-bottom:8px}
 select{width:100%;padding:10px 14px;font-size:13px;background:var(--bg-input);border:0.5px solid var(--border);color:var(--white);border-radius:8px;font-family:inherit;margin-bottom:1rem;transition:border-color .15s}
 select:focus{outline:none;border-color:var(--red)}
-
+ 
 /* ── COMPARE TRAY ── */
 .tray{background:var(--bg-card);border:0.5px solid var(--border);border-radius:8px;padding:.8rem 1rem;margin-bottom:1rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .chips{display:flex;gap:6px;flex-wrap:wrap;flex:1}
@@ -112,7 +112,7 @@ select:focus{outline:none;border-color:var(--red)}
 .btn-go{background:var(--red);color:var(--white);border:none;font-size:11px;padding:7px 16px;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:500;transition:background .15s}
 .btn-go:hover{background:var(--red-h)}
 .btn-clr{background:none;border:none;color:var(--gray-d);font-size:10px;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0}
-
+ 
 /* ── COMPARE TABLE ── */
 .cmp-wrap{overflow-x:auto;margin-top:.75rem;border-radius:8px;overflow:hidden}
 .cmp-tbl{width:100%;border-collapse:collapse;font-size:11px}
@@ -122,19 +122,19 @@ select:focus{outline:none;border-color:var(--red)}
 .cmp-tbl tr:last-child td{border-bottom:none}
 .cmp-tbl tr:hover td{background:#1A1A1A}
 .cmp-tbl td:first-child{font-size:9px;color:var(--gray-d);font-weight:500;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
-
+ 
 /* ── PROPERTY SEARCH ── */
 .prop-sw{position:relative;margin-bottom:12px}
 .prop-sw i{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--gray-d);font-size:16px;pointer-events:none}
 .prop-sw input{width:100%;padding:10px 12px 10px 36px;font-size:13px;background:var(--bg-input);border:0.5px solid var(--border);color:var(--white);border-radius:8px;font-family:inherit;transition:border-color .15s}
 .prop-sw input::placeholder{color:var(--gray-d)}
 .prop-sw input:focus{outline:none;border-color:var(--red)}
-
+ 
 /* ── FOOTER ── */
 .site-footer{background:#0A0A0A;border-top:0.5px solid var(--border);padding:1rem 1.5rem;text-align:center;font-size:11px;color:var(--gray-d);letter-spacing:.3px}
 .site-footer a{color:var(--red);text-decoration:none}
 .site-footer a:hover{text-decoration:underline}
-
+ 
 @media(max-width:600px){
   .site-header{flex-wrap:wrap;gap:10px}
   .hdr-div{display:none}
@@ -145,7 +145,7 @@ select:focus{outline:none;border-color:var(--red)}
 </style>
 </head>
 <body>
-
+ 
 <header class="site-header">
   <div>
     <div class="logo-main"><span>MONKEY</span> MILES</div>
@@ -157,16 +157,16 @@ select:focus{outline:none;border-color:var(--red)}
     <div class="hdr-sub">Data from <a href="https://monkeymiles.boardingarea.com/secret-hotel-vip-programs/" target="_blank">monkeymiles.boardingarea.com ↗</a></div>
   </div>
 </header>
-
+ 
 <div class="page">
-
+ 
   <div class="tabs">
     <button class="tab active" data-tab="browse"><i class="ti ti-building-skyscraper"></i>Browse</button>
     <button class="tab" data-tab="cardfinder"><i class="ti ti-credit-card"></i>My card</button>
     <button class="tab" data-tab="compare"><i class="ti ti-layout-columns"></i>Compare</button>
     <button class="tab" data-tab="property"><i class="ti ti-search"></i>Property lookup</button>
   </div>
-
+ 
   <!-- BROWSE -->
   <div id="tab-browse" class="panel active">
     <div class="controls">
@@ -182,7 +182,7 @@ select:focus{outline:none;border-color:var(--red)}
     <div class="count" id="count-bar"></div>
     <div id="browse-out"></div>
   </div>
-
+ 
   <!-- MY CARD -->
   <div id="tab-cardfinder" class="panel">
     <div class="cf-label">Select your card or status to see your programs:</div>
@@ -218,7 +218,7 @@ select:focus{outline:none;border-color:var(--red)}
     </select>
     <div id="cf-results"><div class="tray-hint">Choose a card above to see your programs.</div></div>
   </div>
-
+ 
   <!-- COMPARE -->
   <div id="tab-compare" class="panel">
     <div class="tray" id="compare-tray">
@@ -230,15 +230,15 @@ select:focus{outline:none;border-color:var(--red)}
     <div class="sec-lbl">Add programs to compare</div>
     <div class="grid" id="compare-grid"></div>
   </div>
-
+ 
   <!-- PROPERTY LOOKUP -->
   <div id="tab-property" class="panel">
     <div class="prop-sw"><i class="ti ti-search"></i><input type="text" id="prop-search" placeholder="Type a hotel brand (e.g. Ritz-Carlton, Conrad, Four Seasons, Waldorf)..."/></div>
     <div id="prop-results"><div class="tray-hint" style="font-size:12px;color:var(--gray-d);padding:.5rem 0">Type a hotel name or brand to find which VIP programs cover it.</div></div>
   </div>
-
+ 
 </div><!-- /page -->
-
+ 
 <footer class="site-footer">
   Hotel chain programs → <a href="http://www.classictravel.com/zachary" target="_blank">classictravel.com/zachary ↗</a>
   &nbsp;·&nbsp;
@@ -248,7 +248,7 @@ select:focus{outline:none;border-color:var(--red)}
   &nbsp;·&nbsp;
   Source: <a href="https://monkeymiles.boardingarea.com/secret-hotel-vip-programs/" target="_blank">monkeymiles.boardingarea.com</a>
 </footer>
-
+ 
 <script>
 const PM={
   breakfast:{icon:'ti-coffee',label:'Breakfast',bg:'#1A0D00',c:'#C9A84C',bc:'#3D2800'},
@@ -266,7 +266,7 @@ const IC={hotel:'ci-h',card:'ci-c',bilt:'ci-b',standalone:'ci-s'};
 const BOOK='http://www.classictravel.com/zachary';
 const CC_URL='https://monkeymiles.boardingarea.com/monkey-miles-top-credit-card-picks/';
 const BILT_URL='https://pages.biltrewards.com/hafh';
-
+ 
 const P=[
   {id:7,name:'Belmond Bellini',program:'Belmond',type:'hotel',icon:'ti-building-estate',hotels:'All Belmond hotels, trains, barges — Orient-Express, Hiram Bingham, etc.',perks:['breakfast','upgrade','credit','wifi','vip'],credit:'Up to $200',minStay:null,notes:'$500 gift voucher for $5,000+ bookings. Waitlist priority for high-demand properties.'},
   {id:8,name:'Dorchester Diamond Club',program:'Dorchester Collection',type:'hotel',icon:'ti-diamond',hotels:'Beverly Hills Hotel, The Dorchester, Hotel Bel-Air, Coworth Park, Le Meurice, Hotel Plaza Athénée',perks:['breakfast','upgrade','credit','wifi','vip','checkinout'],credit:'$100 rooms / $100/night suites',minStay:null,notes:'24/7 Diamond Club Ambassador. Access to GM. Unlimited internet on all devices.'},
@@ -301,7 +301,7 @@ const P=[
   {id:30,name:'Bilt Home Away From Home',program:'Bilt Rewards',type:'bilt',icon:'ti-home',hotels:'2,000+ curated luxury properties — Le Sirenuse, Raffles Singapore, Auberge du Soleil, Ritz-Carlton, Park Hyatt, Rosewood, and more',perks:['breakfast','upgrade','credit','checkinout','points','concierge'],credit:'Up to $100',minStay:'2 nights when using Bilt Cash/credits',notes:'Gold & Platinum members — no card required. Powered by Virtuoso. Chain hotels (Hyatt, Marriott, Hilton, IHG) book as direct bookings — earn hotel points + elite nights. Earn 2x Bilt Points on all bookings.'},
   {id:27,name:'Virtuoso',program:'Standalone — book via travel advisor',type:'standalone',icon:'ti-world',hotels:'Thousands of luxury hotels + cruise lines worldwide',perks:['breakfast','upgrade','checkinout','vip','credit','concierge'],credit:'Varies by property',minStay:null,notes:'Full breakfast vs continental with Amex FHR. Book at virtuoso.com with advisor name. Extensive cruise extras including shipboard credits, shore excursions, and dedicated hosts.'},
 ];
-
+ 
 const CARD_P={
   'amex-plat-biz':[20,21],'amex-gold-biz':[21],'amex-plat':[20,21],'amex-gold':[21],
   'chase-res-biz':[36,38],'chase-sap':[24,38],
@@ -327,17 +327,17 @@ const CARD_NOTE={
   'bilt-gold':'All 19 hotel chain programs also accessible via a travel advisor like Classic Travel.',
   'none':'Virtuoso is your best self-serve option. All hotel chain programs accessible through a travel advisor like Classic Travel.',
 };
-
+ 
 let activeFilter='all',searchTerm='',compareSet=new Set();
-
+ 
 function perkHtml(k){const m=PM[k];return `<span class="perk" style="background:${m.bg};color:${m.c};border-color:${m.bc}"><i class="ti ${m.icon}"></i>${m.label}</span>`;}
-
+ 
 function bookBtn(p){
   if(p.type==='card') return `<a class="btn btn-cc" href="${CC_URL}" target="_blank"><i class="ti ti-external-link"></i>Card options</a>`;
   if(p.type==='bilt') return `<a class="btn btn-bilt" href="${BILT_URL}" target="_blank"><i class="ti ti-external-link"></i>Book via Bilt</a>`;
   return `<a class="btn btn-book" href="${BOOK}" target="_blank"><i class="ti ti-external-link"></i>Book via Classic Travel</a>`;
 }
-
+ 
 function cardHtml(p){
   const inC=compareSet.has(p.id);
   return `<div class="card${inC?' selected':''}" id="c${p.id}">
@@ -355,9 +355,9 @@ function cardHtml(p){
     </div>
   </div>`;
 }
-
+ 
 function secLbl(txt){return `<div class="sec-lbl">${txt}</div>`;}
-
+ 
 function renderBrowse(){
   const q=searchTerm.toLowerCase();
   const filtered=P.filter(p=>{
@@ -378,7 +378,7 @@ function renderBrowse(){
   if(!filtered.length) html=`<div class="no-res"><i class="ti ti-search-off" style="font-size:36px;display:block;margin-bottom:12px"></i>No programs match your search.</div>`;
   document.getElementById('browse-out').innerHTML=html;
 }
-
+ 
 function renderCardFinder(){
   const v=document.getElementById('card-select').value;
   const out=document.getElementById('cf-results');
@@ -394,12 +394,12 @@ function renderCardFinder(){
   html+=`<div style="margin-top:10px"><button class="btn" onclick="document.querySelector('[data-tab=browse]').click();document.querySelector('[data-filter=hotel]').click()">View all ${hotels.length} hotel chain programs →</button></div>`;
   out.innerHTML=html;
 }
-
+ 
 function toggleCompare(id){
   if(compareSet.has(id)){compareSet.delete(id);}else{if(compareSet.size>=4)return;compareSet.add(id);}
   renderBrowse();renderTray();renderCompareGrid();
 }
-
+ 
 function renderTray(){
   const chips=document.getElementById('tray-chips');
   const btn=document.getElementById('do-compare');
@@ -409,7 +409,7 @@ function renderTray(){
   btn.style.display=compareSet.size>=2?'block':'none';
   clr.style.display='block';
 }
-
+ 
 function renderCompareTable(){
   if(compareSet.size<2){document.getElementById('compare-output').innerHTML='<div style="font-size:12px;color:var(--gray-d);padding:.5rem 0">Select at least 2 programs.</div>';return;}
   const sel=P.filter(p=>compareSet.has(p.id));
@@ -422,9 +422,9 @@ function renderCompareTable(){
   rows+=`<tr><td>Hotels</td>${sel.map(p=>`<td style="font-size:10px;color:#777;line-height:1.5">${p.hotels}</td>`).join('')}</tr>`;
   document.getElementById('compare-output').innerHTML=`<div class="cmp-wrap"><table class="cmp-tbl"><thead><tr>${th}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
-
+ 
 function renderCompareGrid(){document.getElementById('compare-grid').innerHTML=P.map(cardHtml).join('');}
-
+ 
 function renderPropLookup(){
   const q=document.getElementById('prop-search').value.trim().toLowerCase();
   const out=document.getElementById('prop-results');
@@ -433,7 +433,7 @@ function renderPropLookup(){
   if(!matched.length){out.innerHTML=`<div class="tray-hint" style="font-size:12px;color:var(--gray-d);padding:.5rem 0">No programs found for "<strong style="color:#CCC">${q}</strong>". Try Ritz-Carlton, Waldorf, or Four Seasons.</div>`;return;}
   out.innerHTML=`<div class="count" style="margin-bottom:10px">${matched.length} program${matched.length>1?'s':''} found for "${q}"</div><div class="grid">${matched.map(cardHtml).join('')}</div>`;
 }
-
+ 
 document.querySelectorAll('.tab').forEach(t=>{
   t.addEventListener('click',()=>{
     document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
