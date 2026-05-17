@@ -1,192 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Hotel VIP Program Finder — Monkey Miles</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#111111;color:#EEEEEE;min-height:100vh}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#111111;--bg-card:#1C1C1C;--bg-hover:#242424;--bg-input:#252525;
-  --red:#CC0000;--red-h:#E00000;--red-dim:#2A0000;--red-lt:#FF5555;
-  --white:#FFFFFF;--off:#EEEEEE;--gray:#999999;--gray-d:#555555;
-  --border:#2E2E2E;--gold:#C9A84C;--gold-d:#2A2000;--teal:#3ABFB1;--teal-d:#002A27;
-  --blue:#5BA3FF;--blue-d:#0A1A2A;
+  --red:#C8102E;--red-dark:#a00c24;--red-light:#fdf0f2;--red-muted:#f5d0d7;
+  --black:#111111;--charcoal:#2a2a2a;--gray-dark:#555;--gray:#888;
+  --gray-light:#e8e8e8;--gray-faint:#f4f4f4;--white:#fff;
+  --gold:#c9a84c;--gold-light:#fdf8ee;--gold-mid:#e8d08a;
+  --green:#1a7a40;--green-light:#edf7f1;
+  --blue:#1a56a0;--blue-light:#edf2fa;
+  --teal:#0e7a72;--teal-light:#edf7f6;
+  --font-head:'Oswald',sans-serif;
+  --font-body:'Source Sans 3',sans-serif;
+  --radius-sm:4px;--radius-md:8px;--radius-lg:12px;
+  --shadow-sm:0 1px 4px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.12);
 }
- 
-/* ── HEADER ── */
-.site-header{background:#0A0A0A;border-bottom:2px solid var(--red);padding:.9rem 1.5rem;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100}
-.logo-main{font-size:18px;font-weight:600;letter-spacing:.5px;color:var(--white);line-height:1}
-.logo-main span{color:var(--red)}
-.logo-sub{font-size:9px;letter-spacing:1.8px;color:var(--gray-d);text-transform:uppercase;margin-top:2px}
-.hdr-div{width:1px;height:40px;background:#2E2E2E;flex-shrink:0}
-.hdr-right{}
-.hdr-title{font-size:13px;font-weight:500;letter-spacing:1.5px;color:var(--off);text-transform:uppercase}
-.hdr-title span{color:var(--red)}
-.hdr-sub{font-size:10px;color:var(--gray-d);margin-top:3px}
-.hdr-sub a{color:var(--gold);text-decoration:none}
-.hdr-sub a:hover{text-decoration:underline}
- 
-/* ── PAGE WRAPPER ── */
-.page{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem}
- 
-/* ── TABS ── */
-.tabs{display:flex;background:#0D0D0D;border:0.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1.25rem}
-.tab{flex:1;padding:11px 8px;font-size:10px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;border:none;background:transparent;color:var(--gray-d);cursor:pointer;border-bottom:2px solid transparent;font-family:inherit;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:5px}
-.tab i{font-size:14px}
-.tab:hover{color:var(--off);background:#161616}
-.tab.active{color:var(--red);border-bottom:2px solid var(--red);background:var(--bg)}
+html{font-size:16px}
+body{font-family:var(--font-body);background:var(--gray-faint);color:var(--black);line-height:1.6;min-height:100vh}
+.mm-header{background:var(--black);border-bottom:3px solid var(--red)}
+.mm-header-inner{max-width:1020px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:14px}
+.mm-logo-img{height:38px;width:auto}
+.mm-logo-text{display:flex;flex-direction:column;line-height:1}
+.mm-logo-name{font-family:var(--font-head);font-size:20px;font-weight:700;color:#fff;letter-spacing:.5px}
+.mm-logo-name em{color:var(--red);font-style:normal}
+.mm-logo-by{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#555;margin-top:2px}
+.mm-logo-divider{width:1px;height:30px;background:#333;flex-shrink:0}
+.mm-header-title{font-family:var(--font-head);font-size:14px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#fff}
+.mm-header-title em{color:var(--red);font-style:normal}
+.mm-hero{background:var(--black);padding:2.75rem 20px 3rem;text-align:center;border-bottom:1px solid #222}
+.mm-hero-eyebrow{font-family:var(--font-head);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:.9rem;display:flex;align-items:center;justify-content:center;gap:12px}
+.mm-hero-eyebrow::before,.mm-hero-eyebrow::after{content:'';flex:0 0 40px;height:1px;background:var(--red);opacity:.5}
+.mm-hero h1{font-family:var(--font-head);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:#fff;letter-spacing:1px;text-transform:uppercase;line-height:1.1;margin-bottom:.9rem}
+.mm-hero h1 em{color:var(--red);font-style:normal}
+.mm-hero p{font-size:15px;color:#888;max-width:560px;margin:0 auto 1.75rem;line-height:1.65}
+.mm-hero-stats{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.mm-stat-num{font-family:var(--font-head);font-size:1.9rem;font-weight:700;color:var(--red);line-height:1}
+.mm-stat-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#666;margin-top:3px}
+.mm-main{max-width:1020px;margin:0 auto;padding:2rem 20px 3rem}
+.mm-tabs{display:flex;border-bottom:2px solid var(--gray-light);margin-bottom:1.5rem;overflow-x:auto}
+.mm-tab{font-family:var(--font-head);font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border:none;background:transparent;color:var(--gray);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s}
+.mm-tab:hover{color:var(--charcoal)}
+.mm-tab.active{color:var(--red);border-bottom-color:var(--red)}
 .panel{display:none}.panel.active{display:block}
- 
-/* ── CONTROLS ── */
-.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
-.sw{flex:1;min-width:200px;position:relative}
-.sw i{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--gray-d);font-size:16px;pointer-events:none}
-.sw input{width:100%;padding:10px 12px 10px 36px;font-size:13px;background:var(--bg-input);border:0.5px solid var(--border);color:var(--white);border-radius:8px;font-family:inherit;transition:border-color .15s}
-.sw input::placeholder{color:var(--gray-d)}
-.sw input:focus{outline:none;border-color:var(--red)}
-.fbtns{display:flex;gap:5px;flex-wrap:wrap}
-.fbtn{font-size:10px;padding:8px 13px;border-radius:8px;border:0.5px solid var(--border);background:var(--bg-card);color:var(--gray);cursor:pointer;font-family:inherit;letter-spacing:.5px;text-transform:uppercase;transition:all .15s}
-.fbtn:hover{background:var(--bg-hover);color:var(--white)}
-.fbtn.active{background:var(--red);color:var(--white);border-color:var(--red)}
- 
-/* ── SECTION LABEL ── */
-.sec-lbl{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray-d);margin:1.25rem 0 10px;display:flex;align-items:center;gap:10px}
-.sec-lbl::before{content:'';width:20px;height:1px;background:var(--red);flex-shrink:0}
-.sec-lbl::after{content:'';flex:1;height:0.5px;background:var(--border)}
-.count{font-size:10px;letter-spacing:.5px;color:var(--gray-d);margin-bottom:10px;text-transform:uppercase}
- 
-/* ── GRID ── */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
- 
-/* ── CARD ── */
-.card{background:var(--bg-card);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.1rem;transition:border-color .15s,background .15s;border-left:3px solid transparent;display:flex;flex-direction:column}
-.card:hover{background:var(--bg-hover);border-color:#3A3A3A}
-.card.selected{border-left:3px solid var(--red)}
-.card-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
-.ci{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
-.ci-h{background:#1A0000;color:var(--red)}
-.ci-c{background:var(--gold-d);color:var(--gold)}
-.ci-s{background:var(--teal-d);color:var(--teal)}
-.ci-b{background:var(--blue-d);color:var(--blue)}
-.card-name{font-size:13px;font-weight:500;color:var(--white);line-height:1.3}
-.card-prog{font-size:10px;color:var(--gray-d);margin-top:2px;letter-spacing:.3px}
-.tbadge{font-size:9px;padding:2px 8px;border-radius:20px;font-weight:500;white-space:nowrap;flex-shrink:0;margin-left:auto;letter-spacing:.5px;text-transform:uppercase}
-.tb-h{background:var(--red-dim);color:var(--red-lt)}
-.tb-c{background:var(--gold-d);color:var(--gold)}
-.tb-s{background:var(--teal-d);color:var(--teal)}
-.tb-b{background:var(--blue-d);color:var(--blue)}
-.card-meta{font-size:10px;color:var(--gray-d);margin-bottom:6px;line-height:1.6}
-.card-notes{font-size:11px;color:var(--gray);line-height:1.65;margin-bottom:8px;flex:1}
-.perks{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
-.perk{font-size:10px;padding:2px 7px;border-radius:20px;display:flex;align-items:center;gap:3px;border:0.5px solid}
-.perk i{font-size:11px}
-.actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:auto}
-.btn{font-size:10px;padding:6px 10px;cursor:pointer;border-radius:8px;font-family:inherit;border:0.5px solid var(--border);background:var(--bg-input);color:var(--gray);transition:all .15s;letter-spacing:.3px;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
-.btn:hover{background:#333;color:var(--white)}
-.btn-book{background:var(--red);color:var(--white);border-color:var(--red)}
-.btn-book:hover{background:var(--red-h)}
-.btn-cc{background:var(--gold-d);color:var(--gold);border-color:#3A2A00}
-.btn-cc:hover{background:#3A2A00}
-.btn-bilt{background:var(--blue-d);color:var(--blue);border-color:#0A2A4A}
-.btn-bilt:hover{background:#0A2A4A}
-.btn-cmp{color:var(--gray)}
-.btn-cmp.in{background:var(--red-dim);color:var(--red-lt);border-color:var(--red)}
-.no-res{grid-column:1/-1;text-align:center;padding:3rem;color:var(--gray-d);font-size:13px}
- 
-/* ── CARD FINDER ── */
-.cf-label{font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--gray-d);margin-bottom:8px}
-select{width:100%;padding:10px 14px;font-size:13px;background:var(--bg-input);border:0.5px solid var(--border);color:var(--white);border-radius:8px;font-family:inherit;margin-bottom:1rem;transition:border-color .15s}
-select:focus{outline:none;border-color:var(--red)}
- 
-/* ── COMPARE TRAY ── */
-.tray{background:var(--bg-card);border:0.5px solid var(--border);border-radius:8px;padding:.8rem 1rem;margin-bottom:1rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.chips{display:flex;gap:6px;flex-wrap:wrap;flex:1}
-.chip{font-size:10px;padding:4px 10px 4px 12px;background:var(--red-dim);color:var(--red-lt);border:0.5px solid var(--red);border-radius:20px;display:flex;align-items:center;gap:5px}
-.chip button{background:none;border:none;color:var(--red-lt);cursor:pointer;font-size:14px;padding:0;line-height:1;opacity:.7;transition:opacity .15s}
-.chip button:hover{opacity:1}
-.tray-hint{font-size:11px;color:var(--gray-d)}
-.btn-go{background:var(--red);color:var(--white);border:none;font-size:11px;padding:7px 16px;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:500;transition:background .15s}
-.btn-go:hover{background:var(--red-h)}
-.btn-clr{background:none;border:none;color:var(--gray-d);font-size:10px;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0}
- 
-/* ── COMPARE TABLE ── */
-.cmp-wrap{overflow-x:auto;margin-top:.75rem;border-radius:8px;overflow:hidden}
-.cmp-tbl{width:100%;border-collapse:collapse;font-size:11px}
-.cmp-tbl th{background:var(--red);color:var(--white);padding:9px 11px;text-align:left;font-weight:500;font-size:9px;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap}
-.cmp-tbl th:first-child{width:100px;background:#990000}
-.cmp-tbl td{padding:8px 11px;border-bottom:0.5px solid var(--border);vertical-align:top;color:var(--off)}
-.cmp-tbl tr:last-child td{border-bottom:none}
-.cmp-tbl tr:hover td{background:#1A1A1A}
-.cmp-tbl td:first-child{font-size:9px;color:var(--gray-d);font-weight:500;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
- 
-/* ── PROPERTY SEARCH ── */
-.prop-sw{position:relative;margin-bottom:12px}
-.prop-sw i{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--gray-d);font-size:16px;pointer-events:none}
-.prop-sw input{width:100%;padding:10px 12px 10px 36px;font-size:13px;background:var(--bg-input);border:0.5px solid var(--border);color:var(--white);border-radius:8px;font-family:inherit;transition:border-color .15s}
-.prop-sw input::placeholder{color:var(--gray-d)}
-.prop-sw input:focus{outline:none;border-color:var(--red)}
- 
-/* ── FOOTER ── */
-.site-footer{background:#0A0A0A;border-top:0.5px solid var(--border);padding:1rem 1.5rem;text-align:center;font-size:11px;color:var(--gray-d);letter-spacing:.3px}
-.site-footer a{color:var(--red);text-decoration:none}
-.site-footer a:hover{text-decoration:underline}
- 
-@media(max-width:600px){
-  .site-header{flex-wrap:wrap;gap:10px}
-  .hdr-div{display:none}
-  .tabs{flex-wrap:wrap}
-  .tab{font-size:9px;padding:9px 4px}
-  .grid{grid-template-columns:1fr}
+.mm-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.25rem;align-items:center}
+.mm-search-wrap{flex:1;min-width:220px;position:relative}
+.mm-search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray);pointer-events:none}
+.mm-search{width:100%;padding:10px 14px 10px 38px;font-family:var(--font-body);font-size:14px;border:1.5px solid var(--gray-light);border-radius:var(--radius-md);background:#fff;color:var(--black);transition:border-color .15s}
+.mm-search:focus{outline:none;border-color:var(--red)}
+.mm-search::placeholder{color:#bbb}
+.mm-filter-btns{display:flex;gap:6px;flex-wrap:wrap}
+.mm-fbtn{font-family:var(--font-head);font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:7px 14px;border:1.5px solid var(--gray-light);border-radius:var(--radius-sm);background:#fff;color:var(--gray-dark);cursor:pointer;transition:all .15s}
+.mm-fbtn:hover{border-color:var(--red);color:var(--red)}
+.mm-fbtn.active{background:var(--red);border-color:var(--red);color:#fff}
+.mm-sec{font-family:var(--font-head);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin:2rem 0 .85rem;display:flex;align-items:center;gap:10px}
+.mm-sec::before{content:'';width:16px;height:2px;background:var(--red);flex-shrink:0}
+.mm-sec::after{content:'';flex:1;height:0.5px;background:var(--gray-light)}
+.mm-count{font-size:13px;color:var(--gray);margin-bottom:1rem}
+.mm-row{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);margin-bottom:10px;overflow:hidden;border:1.5px solid transparent;transition:box-shadow .15s,border-color .15s}
+.mm-row:hover{box-shadow:var(--shadow-md);border-color:var(--gray-light)}
+.mm-row.open{border-color:var(--red);box-shadow:var(--shadow-md)}
+.mm-row-stripe{height:3px;width:100%}
+.s-hotel{background:var(--red)}.s-card{background:var(--gold)}.s-bilt{background:var(--blue)}.s-standalone{background:var(--teal)}
+.mm-row-summary{display:flex;align-items:center;gap:0;padding:.9rem 1.25rem;cursor:pointer;user-select:none}
+.mm-row-summary:hover .mm-row-name{color:var(--red)}
+.mm-row-icon{width:44px;height:44px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:22px;margin-right:16px;flex-shrink:0}
+.i-hotel{background:var(--red-light);color:var(--red)}
+.i-card{background:var(--gold-light);color:#8b6000}
+.i-bilt{background:var(--blue-light);color:var(--blue)}
+.i-standalone{background:var(--teal-light);color:var(--teal)}
+.mm-row-center{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;min-width:0}
+.mm-row-left{min-width:200px;flex:1}
+.mm-row-name{font-family:var(--font-head);font-size:17px;font-weight:600;color:var(--black);letter-spacing:.3px;line-height:1.2;transition:color .15s}
+.mm-row-prog{font-size:12px;color:var(--gray);margin-top:2px}
+.mm-row-perks{display:flex;flex-wrap:wrap;gap:4px;flex:2;min-width:200px}
+.mm-perk{font-family:var(--font-head);font-size:10px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px;display:flex;align-items:center;gap:3px;white-space:nowrap}
+.mm-row-right{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-left:16px}
+.mm-row-credit{font-family:var(--font-head);font-size:14px;font-weight:600;color:var(--green);white-space:nowrap}
+.mm-type-badge{font-family:var(--font-head);font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.b-hotel{background:var(--red-muted);color:var(--red-dark)}.b-card{background:#faedc6;color:#7a5200}.b-bilt{background:#dce8f7;color:var(--blue)}.b-standalone{background:#d4eeec;color:var(--teal)}
+.mm-chevron{color:var(--gray);transition:transform .2s;flex-shrink:0}
+.mm-row.open .mm-chevron{transform:rotate(180deg)}
+.mm-row-detail{display:none;border-top:1px solid var(--gray-light)}
+.mm-row.open .mm-row-detail{display:block}
+.mm-detail-inner{padding:1.5rem 1.5rem 1.5rem}
+.mm-detail-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.25rem}
+.mm-detail-label{font-family:var(--font-head);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem;padding-bottom:.4rem;border-bottom:1px solid var(--gray-light)}
+.mm-detail-value{font-size:13px;color:var(--charcoal);line-height:1.65}
+.mm-detail-value strong{color:var(--black);font-weight:600}
+.mm-brands{display:flex;flex-wrap:wrap;gap:5px;margin-top:.35rem}
+.mm-brand-chip{font-size:12px;padding:3px 9px;background:var(--gray-faint);border:1px solid var(--gray-light);border-radius:20px;color:var(--charcoal)}
+.mm-perk-full{display:flex;flex-wrap:wrap;gap:5px}
+.mm-perk-pill{font-size:12px;padding:4px 10px;border-radius:4px;display:flex;align-items:center;gap:5px}
+.mm-detail-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding-top:1rem;border-top:1px solid var(--gray-light)}
+.mm-btn{font-family:var(--font-head);font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;padding:8px 16px;border-radius:var(--radius-sm);cursor:pointer;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:1.5px solid transparent}
+.mm-btn-primary{background:var(--red);color:#fff;border-color:var(--red)}.mm-btn-primary:hover{background:var(--red-dark)}
+.mm-btn-gold{background:var(--gold-light);color:#7a5200;border-color:var(--gold-mid)}.mm-btn-gold:hover{background:#faedc6}
+.mm-btn-blue{background:var(--blue-light);color:var(--blue);border-color:#b8d0ef}.mm-btn-blue:hover{background:#dce8f7}
+.mm-btn-ghost{background:transparent;color:var(--gray-dark);border:1.5px solid var(--gray-light)}.mm-btn-ghost:hover{border-color:var(--gray);color:var(--black)}
+.mm-btn-ghost.in-compare{background:var(--red-muted);color:var(--red-dark);border-color:var(--red-muted)}
+.mm-zach{background:#fffbf0;border:1px solid var(--gold-mid);border-radius:6px;padding:.75rem 1rem;margin-bottom:.85rem}
+.mm-miles-wrap{margin-top:.85rem;border:1px solid var(--gray-light);border-radius:var(--radius-md);overflow:hidden}
+.mm-miles-bar{display:flex;align-items:center;gap:10px;padding:.65rem 1rem;background:var(--black);cursor:pointer;user-select:none}
+.mm-miles-avatar{width:26px;height:26px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mm-miles-avatar svg{color:#fff}
+.mm-miles-title{font-family:var(--font-head);font-size:12px;font-weight:600;letter-spacing:1px;color:#fff}
+.mm-miles-title em{color:var(--red);font-style:normal}
+.mm-miles-sub{font-size:11px;color:#666;margin-left:auto}
+.mm-miles-chevron{color:#666;transition:transform .2s;margin-left:8px;flex-shrink:0}
+.mm-miles-open .mm-miles-chevron{transform:rotate(180deg)}
+.mm-miles-body{display:none;padding:1rem;font-size:13px;color:var(--charcoal);line-height:1.75;background:#fafafa}
+.mm-miles-open .mm-miles-body{display:block}
+.mm-miles-body p{margin-bottom:.65rem}.mm-miles-body p:last-child{margin-bottom:0}
+.mm-miles-body strong{color:var(--black);font-weight:600}
+.mm-dots{display:inline-flex;gap:4px;vertical-align:middle;margin-left:4px}
+.mm-dots span{width:5px;height:5px;border-radius:50%;background:var(--red);animation:mmb .9s infinite}
+.mm-dots span:nth-child(2){animation-delay:.15s}.mm-dots span:nth-child(3){animation-delay:.3s}
+@keyframes mmb{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.mm-tray{background:#fff;border:1.5px solid var(--gray-light);border-radius:var(--radius-md);padding:.85rem 1.1rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:var(--shadow-sm)}
+.mm-chips{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.mm-chip{font-family:var(--font-head);font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px 4px 12px;background:var(--red-muted);color:var(--red-dark);border:1px solid var(--red-muted);border-radius:20px;display:flex;align-items:center;gap:5px}
+.mm-chip button{background:none;border:none;color:var(--red-dark);cursor:pointer;font-size:14px;padding:0;line-height:1;opacity:.6}
+.mm-chip button:hover{opacity:1}
+.mm-tray-hint{font-size:13px;color:var(--gray)}
+.mm-btn-clr{background:none;border:none;font-size:12px;color:var(--gray);cursor:pointer;text-decoration:underline;padding:0;font-family:var(--font-body)}
+.mm-cmp-wrap{overflow-x:auto;border-radius:var(--radius-md);border:1px solid var(--gray-light);margin-top:.75rem}
+.mm-cmp-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.mm-cmp-tbl th{font-family:var(--font-head);font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;background:var(--black);color:#fff;padding:10px 12px;text-align:left;white-space:nowrap}
+.mm-cmp-tbl th:first-child{background:var(--red);width:120px}
+.mm-cmp-tbl td{padding:9px 12px;border-bottom:1px solid var(--gray-light);vertical-align:top;color:var(--charcoal)}
+.mm-cmp-tbl tr:last-child td{border-bottom:none}.mm-cmp-tbl tr:hover td{background:#fafafa}
+.mm-cmp-tbl td:first-child{font-family:var(--font-head);font-size:10px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;color:var(--gray);white-space:nowrap}
+.mm-cf-label{font-family:var(--font-head);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-dark);margin-bottom:8px}
+.mm-select{width:100%;padding:11px 14px;font-family:var(--font-body);font-size:14px;border:1.5px solid var(--gray-light);border-radius:var(--radius-md);background:#fff;color:var(--black);margin-bottom:1.25rem}
+.mm-select:focus{outline:none;border-color:var(--red)}
+.mm-prop-wrap{position:relative;margin-bottom:1rem}
+.mm-prop-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray);pointer-events:none}
+.mm-prop-input{width:100%;padding:11px 14px 11px 40px;font-family:var(--font-body);font-size:14px;border:1.5px solid var(--gray-light);border-radius:var(--radius-md);background:#fff;color:var(--black);transition:border-color .15s}
+.mm-prop-input:focus{outline:none;border-color:var(--red)}
+.mm-prop-input::placeholder{color:#bbb}
+.mm-footer{background:var(--black);border-top:3px solid var(--red);padding:1.25rem 20px;text-align:center}
+.mm-footer p{font-size:12px;color:#555;line-height:1.8}
+.mm-footer a{color:var(--red);text-decoration:none}.mm-footer a:hover{text-decoration:underline}
+.mm-empty{text-align:center;padding:3rem;color:var(--gray);font-size:14px}
+@media(max-width:700px){
+  .mm-detail-grid{grid-template-columns:1fr}
+  .mm-row-perks{display:none}
+  .mm-header-title{display:none}
+  .mm-hero h1{font-size:1.75rem}
+  .mm-row-right{flex-wrap:wrap;gap:6px}
 }
 </style>
 </head>
 <body>
- 
-<header class="site-header">
-  <div>
-    <div class="logo-main"><span>MONKEY</span> MILES</div>
-    <div class="logo-sub">by Zachary Burr Abel</div>
-  </div>
-  <div class="hdr-div"></div>
-  <div class="hdr-right">
-    <div class="hdr-title">HOTEL <span>VIP</span> PROGRAM FINDER</div>
-    <div class="hdr-sub">Data from <a href="https://monkeymiles.boardingarea.com/secret-hotel-vip-programs/" target="_blank">monkeymiles.boardingarea.com ↗</a></div>
+<header class="mm-header">
+  <div class="mm-header-inner">
+    <a href="https://monkeymiles.boardingarea.com" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <img src="https://monkeymiles.boardingarea.com/wp-content/uploads/2023/01/Monkey-Miles_Logo.png" alt="Monkey Miles" class="mm-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="mm-logo-text" style="display:none"><div class="mm-logo-name"><em>MONKEY</em> MILES</div><div class="mm-logo-by">by Zachary Burr Abel</div></div>
+    </a>
+    <div class="mm-logo-divider"></div>
+    <div class="mm-header-title">HOTEL <em>VIP</em> PROGRAM FINDER</div>
   </div>
 </header>
- 
-<div class="page">
- 
-  <div class="tabs">
-    <button class="tab active" data-tab="browse"><i class="ti ti-building-skyscraper"></i>Browse</button>
-    <button class="tab" data-tab="cardfinder"><i class="ti ti-credit-card"></i>My card</button>
-    <button class="tab" data-tab="compare"><i class="ti ti-layout-columns"></i>Compare</button>
-    <button class="tab" data-tab="property"><i class="ti ti-search"></i>Property lookup</button>
+<div class="mm-hero">
+  <div class="mm-hero-eyebrow">Monkey Miles Tool</div>
+  <h1>Find Your <em>VIP</em> Hotel Experience</h1>
+  <p>Secret programs with elite perks at qualifying rates. Click any row to expand full details — brands, credits, booking instructions, and insider tips from Miles.</p>
+  <div class="mm-hero-stats">
+    <div class="mm-stat"><div class="mm-stat-num">29</div><div class="mm-stat-label">Hotel chains</div></div>
+    <div class="mm-stat"><div class="mm-stat-num">12</div><div class="mm-stat-label">Credit card programs</div></div>
+    <div class="mm-stat"><div class="mm-stat-num">1</div><div class="mm-stat-label">Bilt program</div></div>
+    <div class="mm-stat"><div class="mm-stat-num">1</div><div class="mm-stat-label">Standalone</div></div>
   </div>
- 
-  <!-- BROWSE -->
+</div>
+<div class="mm-main">
+  <div class="mm-tabs">
+    <button class="mm-tab active" data-tab="browse">Browse All</button>
+    <button class="mm-tab" data-tab="cardfinder">My Card</button>
+    <button class="mm-tab" data-tab="compare">Compare</button>
+    <button class="mm-tab" data-tab="property">Property Lookup</button>
+  </div>
   <div id="tab-browse" class="panel active">
-    <div class="controls">
-      <div class="sw"><i class="ti ti-search"></i><input type="text" id="search" placeholder="Search programs, perks, hotel brands..."/></div>
-      <div class="fbtns">
-        <button class="fbtn active" data-filter="all">All</button>
-        <button class="fbtn" data-filter="hotel">Hotel chains</button>
-        <button class="fbtn" data-filter="card">Credit cards</button>
-        <button class="fbtn" data-filter="bilt">Bilt</button>
-        <button class="fbtn" data-filter="standalone">Standalone</button>
+    <div class="mm-filters">
+      <div class="mm-search-wrap">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="mm-search" type="text" id="search" placeholder="Search programs, brands, perks..."/>
+      </div>
+      <div class="mm-filter-btns">
+        <button class="mm-fbtn active" data-filter="all">All</button>
+        <button class="mm-fbtn" data-filter="hotel">Hotel chains</button>
+        <button class="mm-fbtn" data-filter="card">Credit cards</button>
+        <button class="mm-fbtn" data-filter="bilt">Bilt</button>
+        <button class="mm-fbtn" data-filter="standalone">Standalone</button>
       </div>
     </div>
-    <div class="count" id="count-bar"></div>
+    <div class="mm-count" id="count-bar"></div>
     <div id="browse-out"></div>
   </div>
- 
-  <!-- MY CARD -->
   <div id="tab-cardfinder" class="panel">
-    <div class="cf-label">Select your card or status to see your programs:</div>
-    <select id="card-select">
+    <div class="mm-cf-label">Select your card or status:</div>
+    <select class="mm-select" id="card-select">
       <option value="">— choose your card or status —</option>
       <optgroup label="American Express">
         <option value="amex-plat-biz">The Business Platinum Card® from American Express</option>
@@ -216,90 +236,443 @@ select:focus{outline:none;border-color:var(--red)}
       </optgroup>
       <option value="none">No premium card — use travel advisor</option>
     </select>
-    <div id="cf-results"><div class="tray-hint">Choose a card above to see your programs.</div></div>
+    <div id="cf-results"><p style="font-size:13px;color:var(--gray)">Choose a card above.</p></div>
   </div>
- 
-  <!-- COMPARE -->
   <div id="tab-compare" class="panel">
-    <div class="tray" id="compare-tray">
-      <div class="chips" id="tray-chips"><span class="tray-hint">Add programs from Browse to compare (up to 4)</span></div>
-      <button class="btn-go" id="do-compare" style="display:none">Compare ↗</button>
-      <button class="btn-clr" id="clear-compare" style="display:none">Clear all</button>
+    <div class="mm-tray" id="compare-tray">
+      <div class="mm-chips" id="tray-chips"><span class="mm-tray-hint">Add programs to compare — up to 4</span></div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="mm-btn mm-btn-primary" id="do-compare" style="display:none">Compare</button>
+        <button class="mm-btn-clr" id="clear-compare" style="display:none">Clear all</button>
+      </div>
     </div>
     <div id="compare-output"></div>
-    <div class="sec-lbl">Add programs to compare</div>
-    <div class="grid" id="compare-grid"></div>
+    <div class="mm-sec">Add programs to compare</div>
+    <div id="compare-grid"></div>
   </div>
- 
-  <!-- PROPERTY LOOKUP -->
   <div id="tab-property" class="panel">
-    <div class="prop-sw"><i class="ti ti-search"></i><input type="text" id="prop-search" placeholder="Type a hotel brand (e.g. Ritz-Carlton, Conrad, Four Seasons, Waldorf)..."/></div>
-    <div id="prop-results"><div class="tray-hint" style="font-size:12px;color:var(--gray-d);padding:.5rem 0">Type a hotel name or brand to find which VIP programs cover it.</div></div>
+    <div class="mm-prop-wrap">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="mm-prop-input" type="text" id="prop-search" placeholder="Type a hotel brand — e.g. Ritz-Carlton, Conrad, Four Seasons, Waldorf Astoria..."/>
+    </div>
+    <div id="prop-results"><p style="font-size:13px;color:var(--gray)">Type a hotel name or brand to find which VIP programs cover it.</p></div>
   </div>
- 
-</div><!-- /page -->
- 
-<footer class="site-footer">
-  Hotel chain programs → <a href="http://www.classictravel.com/zachary" target="_blank">classictravel.com/zachary ↗</a>
-  &nbsp;·&nbsp;
-  Credit cards → <a href="https://monkeymiles.boardingarea.com/monkey-miles-top-credit-card-picks/" target="_blank">Monkey Miles top picks ↗</a>
-  &nbsp;·&nbsp;
-  Bilt → <a href="https://pages.biltrewards.com/hafh" target="_blank">biltrewards.com ↗</a>
-  &nbsp;·&nbsp;
-  Source: <a href="https://monkeymiles.boardingarea.com/secret-hotel-vip-programs/" target="_blank">monkeymiles.boardingarea.com</a>
+</div>
+<footer class="mm-footer">
+  <p>Hotel chain programs → <a href="http://www.classictravel.com/zachary" target="_blank">classictravel.com/zachary</a> &nbsp;·&nbsp; Credit cards → <a href="https://monkeymiles.boardingarea.com/monkey-miles-top-credit-card-picks/" target="_blank">Monkey Miles top picks</a> &nbsp;·&nbsp; Bilt → <a href="https://pages.biltrewards.com/hafh" target="_blank">biltrewards.com</a><br>Data from <a href="https://monkeymiles.boardingarea.com/secret-hotel-vip-programs/" target="_blank">monkeymiles.boardingarea.com/secret-hotel-vip-programs</a></p>
 </footer>
  
 <script>
 const PM={
-  breakfast:{icon:'ti-coffee',label:'Breakfast',bg:'#1A0D00',c:'#C9A84C',bc:'#3D2800'},
-  upgrade:{icon:'ti-arrow-up',label:'Room upgrade',bg:'#001A0A',c:'#3ABFB1',bc:'#003D2B'},
-  credit:{icon:'ti-currency-dollar',label:'Hotel credit',bg:'#1A0000',c:'#FF6B6B',bc:'#3D0000'},
-  wifi:{icon:'ti-wifi',label:'Free wifi',bg:'#001220',c:'#6BA3FF',bc:'#001A3D'},
-  checkinout:{icon:'ti-clock',label:'Early/late CO',bg:'#1A1200',c:'#C9A84C',bc:'#3D2800'},
-  points:{icon:'ti-star',label:'Bonus points',bg:'#1A0D00',c:'#C9A84C',bc:'#3D2800'},
-  vip:{icon:'ti-award',label:'VIP status',bg:'#1A0000',c:'#FF5555',bc:'#4D0000'},
-  nowalk:{icon:'ti-shield-check',label:'No-walk policy',bg:'#001A0A',c:'#3ABFB1',bc:'#003D2B'},
-  concierge:{icon:'ti-headset',label:'Concierge',bg:'#0A1A2A',c:'#5BA3FF',bc:'#0A2A4A'},
+  breakfast:{label:'Breakfast',bg:'#fdf8ee',c:'#8b6000',icon:'☕'},
+  upgrade:{label:'Room upgrade',bg:'#edf7f1',c:'#1a7a40',icon:'⬆'},
+  credit:{label:'Hotel credit',bg:'#fdf0f2',c:'#a00c24',icon:'$'},
+  wifi:{label:'Free wifi',bg:'#edf2fa',c:'#1a56a0',icon:'◎'},
+  checkinout:{label:'Early/late CO',bg:'#fdf8ee',c:'#8b6000',icon:'⏰'},
+  points:{label:'Bonus points',bg:'#fdf8ee',c:'#8b6000',icon:'★'},
+  vip:{label:'VIP status',bg:'#fdf0f2',c:'#a00c24',icon:'♛'},
+  nowalk:{label:'No-walk policy',bg:'#edf7f1',c:'#1a7a40',icon:'✓'},
+  concierge:{label:'Concierge',bg:'#edf2fa',c:'#1a56a0',icon:'◈'},
 };
-const TC={hotel:{cls:'tb-h',label:'Hotel chain'},card:{cls:'tb-c',label:'Credit card'},bilt:{cls:'tb-b',label:'Bilt'},standalone:{cls:'tb-s',label:'Standalone'}};
-const IC={hotel:'ci-h',card:'ci-c',bilt:'ci-b',standalone:'ci-s'};
+const TC={
+  hotel:{stripe:'s-hotel',icon:'i-hotel',badge:'b-hotel',label:'Hotel chain'},
+  card:{stripe:'s-card',icon:'i-card',badge:'b-card',label:'Credit card'},
+  bilt:{stripe:'s-bilt',icon:'i-bilt',badge:'b-bilt',label:'Bilt'},
+  standalone:{stripe:'s-standalone',icon:'i-standalone',badge:'b-standalone',label:'Standalone'},
+};
 const BOOK='http://www.classictravel.com/zachary';
 const CC_URL='https://monkeymiles.boardingarea.com/monkey-miles-top-credit-card-picks/';
 const BILT_URL='https://pages.biltrewards.com/hafh';
  
-const P=[
-  {id:7,name:'Belmond Bellini',program:'Belmond',type:'hotel',icon:'ti-building-estate',hotels:'All Belmond hotels, trains, barges — Orient-Express, Hiram Bingham, etc.',perks:['breakfast','upgrade','credit','wifi','vip'],credit:'Up to $200',minStay:null,notes:'$500 gift voucher for $5,000+ bookings. Waitlist priority for high-demand properties.'},
-  {id:8,name:'Dorchester Diamond Club',program:'Dorchester Collection',type:'hotel',icon:'ti-diamond',hotels:'Beverly Hills Hotel, The Dorchester, Hotel Bel-Air, Coworth Park, Le Meurice, Hotel Plaza Athénée',perks:['breakfast','upgrade','credit','wifi','vip','checkinout'],credit:'$100 rooms / $100/night suites',minStay:null,notes:'24/7 Diamond Club Ambassador. Access to GM. Unlimited internet on all devices.'},
-  {id:9,name:'Four Seasons Preferred Partner',program:'Four Seasons',type:'hotel',icon:'ti-leaf',hotels:'All Four Seasons properties worldwide',perks:['breakfast','upgrade','vip','nowalk'],credit:null,minStay:null,notes:'Full American breakfast (vs continental with Amex FHR). Top priority for best room inventory. No-walk policy.'},
-  {id:4,name:'Hilton Impresario',program:'Hilton',type:'hotel',icon:'ti-building',hotels:'Waldorf Astoria, LXR, Conrad',perks:['breakfast','upgrade','credit','points'],credit:'$100',minStay:null,notes:'Double Hilton Honors points for the entire stay.'},
-  {id:3,name:'Hyatt Privé',program:'Hyatt',type:'hotel',icon:'ti-building',hotels:'Park Hyatt, Andaz, Grand Hyatt, Hyatt Regency, Alila, Joie de Vivre, Thompson, Miraval, Hyatt Ziva, Hyatt Zilara, AMR Resorts',perks:['breakfast','upgrade','credit','checkinout','vip'],credit:'$50–$100',minStay:'2–4 nights by brand',notes:'Upgrade confirmed within 24hrs of booking. Zach stacked with points upgrades at Grand Hyatt Hong Kong.'},
-  {id:5,name:'IHG Luxury',program:'IHG Hotels & Resorts',type:'hotel',icon:'ti-building',hotels:'InterContinental (global), Kimpton (outside US), Regent (global)',perks:['breakfast','upgrade','credit','checkinout','wifi','nowalk'],credit:'$100',minStay:'2 nights',notes:'Guaranteed 2pm late checkout. $100 value amenity at Regent and InterContinental properties.'},
-  {id:6,name:'IHG Lifestyle',program:'IHG Hotels & Resorts',type:'hotel',icon:'ti-building',hotels:'Hotel Indigo, Kimpton (within US)',perks:['upgrade','credit','checkinout','wifi'],credit:'$50',minStay:null,notes:'Bottled water, fresh fruit, and snacks in room on arrival.'},
-  {id:10,name:'Langham Couture',program:'Langham Hotels & Resorts',type:'hotel',icon:'ti-building',hotels:'All Langham Hotels & Resorts properties worldwide',perks:['upgrade','checkinout','wifi'],credit:null,minStay:null,notes:'6-hour flexible pre/post arrival for early check-in or late checkout. Welcome drink included.'},
-  {id:11,name:'Mandarin Oriental Fan Club',program:'Mandarin Oriental',type:'hotel',icon:'ti-flower',hotels:'All Mandarin Oriental properties worldwide',perks:['breakfast','upgrade','credit','wifi','vip'],credit:'$100 F&B or Spa',minStay:null,notes:'Priority waitlist clearance. Personalized welcome amenity per stay.'},
-  {id:1,name:'Marriott STARS',program:'Marriott Bonvoy',type:'hotel',icon:'ti-building-skyscraper',hotels:'Bvlgari, Edition, Luxury Collection, Ritz-Carlton, Ritz-Carlton Reserve, St. Regis',perks:['breakfast','upgrade','credit','checkinout','vip','nowalk'],credit:'$100',minStay:null,notes:'Continental or full breakfast. Zach has used at Ritz-Carltons with upgrades both times.'},
-  {id:2,name:'Marriott Luminous',program:'Marriott Bonvoy',type:'hotel',icon:'ti-building-skyscraper',hotels:'Autograph Collection, JW Marriott, Le Meridien, Renaissance, W Hotels, Westin, Tribute Portfolio',perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],credit:'$100 at select hotels',minStay:null,notes:'Daily breakfast for two and free basic wifi included.'},
-  {id:12,name:'Oetker Pearl Partner',program:'Oetker Collection',type:'hotel',icon:'ti-crown',hotels:'Le Bristol Paris, The Lanesborough London, Brenners Park-Hotel & Spa, Palais Namaskar',perks:['breakfast','upgrade','credit','wifi','vip','checkinout'],credit:'€85–€170',minStay:null,notes:'"Best room" within category guaranteed at booking. Priority courtesy car access where applicable.'},
-  {id:13,name:'Peninsula Pen Club',program:'The Peninsula Hotels',type:'hotel',icon:'ti-building-skyscraper',hotels:'All Peninsula properties — Beijing, Bangkok, New York, Hong Kong, Paris, Tokyo, etc.',perks:['breakfast','upgrade','checkinout','vip'],credit:null,minStay:null,notes:'"Peninsula Time" for flexible early/late stays. VOIP phone at select hotels. Zach has used 3x.'},
-  {id:14,name:'Preferred Hotels Platinum Partner',program:'Preferred Hotels & Resorts',type:'hotel',icon:'ti-building',hotels:'Select Preferred Hotels & Resorts worldwide',perks:['breakfast','upgrade','credit','wifi','checkinout'],credit:'$75',minStay:null,notes:'Credit applicable to resort fees, F&B, spa, etc.'},
-  {id:15,name:'Relais & Châteaux Preferred Partner',program:'Relais & Châteaux',type:'hotel',icon:'ti-castle',hotels:'All participating R&C boutique properties worldwide',perks:['breakfast','upgrade','vip'],credit:null,minStay:null,notes:'Priority upgrades and VIP amenities at unique boutique luxury properties.'},
-  {id:16,name:'Rocco Forte Knights',program:'Rocco Forte Hotels',type:'hotel',icon:'ti-shield',hotels:'The Balmoral Edinburgh, Hotel de Russie Rome, Villa Kennedy Frankfurt, Hotel Savoy Florence',perks:['breakfast','upgrade','credit','wifi','checkinout','vip'],credit:'$100–$200',minStay:'2 nights for suite credit',notes:'20% off spa services. $200 credit for suites with 2-night minimum.'},
-  {id:17,name:'Rosewood Elite',program:'Rosewood Hotels & Resorts',type:'hotel',icon:'ti-building-estate',hotels:'All Rosewood Hotels & Resorts worldwide',perks:['breakfast','upgrade','credit','checkinout','vip','nowalk'],credit:'Up to $100',minStay:null,notes:'On-property Elite rep to assist during your stay. Priority waitlist during peak travel.'},
-  {id:19,name:'Shangri-La Luxury Circle',program:'Shangri-La Hotels & Resorts',type:'hotel',icon:'ti-building-skyscraper',hotels:'All Shangri-La Hotels, Kerry Hotels, Hotel Jen properties',perks:['breakfast','upgrade','credit','checkinout','nowalk'],credit:'$100 or 10% ADR (higher)',minStay:'Min stay value at many properties',notes:'Space available upgrade at time of booking, not just check-in. Priority waitlist.'},
-  {id:18,name:'Sofitel STEP Program',program:'Sofitel / MGallery',type:'hotel',icon:'ti-building',hotels:'Sofitel and MGallery properties worldwide',perks:['breakfast','upgrade','wifi','checkinout','nowalk'],credit:null,minStay:null,notes:'No-walk policy included. Space available early check-in and late checkout.'},
-  {id:20,name:'American Express® Fine Hotels + Resorts®',program:'American Express',type:'card',icon:'ti-credit-card',hotels:'1,800+ luxury properties worldwide',perks:['breakfast','upgrade','credit','checkinout','wifi','points'],credit:'$100 + up to $600/yr hotel credit',minStay:null,notes:'Platinum Card®, Business Platinum Card®, and Centurion® only. Guaranteed 4pm checkout. 5x points prepaid. Continental breakfast. $300 semi-annual hotel credit ($600/yr) on FHR + Hotel Collection bookings.'},
-  {id:21,name:'American Express® The Hotel Collection',program:'American Express',type:'card',icon:'ti-credit-card',hotels:'1,300+ upscale hotels via AmexTravel.com',perks:['upgrade','credit','points'],credit:'$100',minStay:'2 nights',notes:'Available to Gold Card®, Business Gold Card®, Platinum Card®, Business Platinum Card®, and Centurion® members. $100 on-property credit per stay. Room upgrade when available.'},
-  {id:22,name:'Capital One Venture X — Premier Collection',program:'Capital One',type:'card',icon:'ti-credit-card',hotels:'High-end hotels worldwide',perks:['breakfast','upgrade','credit','wifi','checkinout','points'],credit:'$100',minStay:null,notes:'Venture X and Venture X Business cards. Earn 10x miles on Premier Collection. Hotel loyalty points and elite status still earned.'},
-  {id:35,name:'Capital One Venture X Business — Premier Collection',program:'Capital One',type:'card',icon:'ti-credit-card',hotels:'High-end hotels worldwide',perks:['breakfast','upgrade','credit','wifi','checkinout','points'],credit:'$100',minStay:null,notes:'Same Premier Collection benefits as Venture X personal. Earn 10x miles. Loyalty points and elite status still earned.'},
-  {id:23,name:'Capital One Venture Rewards — Lifestyle Collection',program:'Capital One',type:'card',icon:'ti-credit-card',hotels:'Broader hotel selection worldwide',perks:['upgrade','credit','wifi','checkinout','points'],credit:'$50',minStay:null,notes:'Open to Venture Rewards and Spark Miles cards. Earn 5x miles on Lifestyle Collection bookings.'},
-  {id:24,name:'Chase Sapphire Reserve® — The Edit by Chase Travel℠',program:'Chase',type:'card',icon:'ti-credit-card',hotels:'Select luxury hotels via chase.com/travel/the-edit',perks:['breakfast','upgrade','credit','wifi','checkinout','points'],credit:'$100 on-property + up to $500/yr Edit credit',minStay:null,notes:'Visa Infinite card. Up to $500/yr in The Edit credits (2x $250, use any time in 2026). One-time $250 credit for select Chase Travel hotels. Earn 8x on Chase Travel.'},
-  {id:36,name:'Chase Sapphire Reserve for Business℠ — The Edit',program:'Chase',type:'card',icon:'ti-credit-card',hotels:'Select luxury hotels via Chase Travel',perks:['breakfast','upgrade','credit','wifi','checkinout','points'],credit:'$100 on-property + up to $500/yr Edit credit',minStay:null,notes:'Visa Infinite card. Same Edit benefits as personal Reserve. Up to $500/yr in The Edit credits + one-time $250 for select Chase Travel hotels in 2026. $795 annual fee.'},
-  {id:37,name:'Citi Strata Elite℠ Card',program:'Citi',type:'card',icon:'ti-credit-card',hotels:'Hotels booked via Citi Travel® platform',perks:['credit','points'],credit:'$300/yr hotel credit',minStay:'2 nights',notes:'$300 annual hotel credit for 2-night+ prepaid stays via Citi Travel. 12x points on hotels booked via Citi Travel. $595 annual fee. Launched July 2025.'},
-  {id:25,name:'Citi Prestige® Card — 4th Night Free',program:'Citi',type:'card',icon:'ti-credit-card',hotels:'Hotels bookable via thankyou.com',perks:['credit'],credit:'Free 4th night',minStay:'4 nights',notes:'Book online at thankyou.com for a complimentary 4th night. Zach used at Hilton Waldorf Caledonian and Nun Relais Assisi.'},
-  {id:38,name:'Visa Infinite® — Luxury Hotel Collection',program:'Visa',type:'card',icon:'ti-credit-card',hotels:'Select Visa Luxury Hotel Collection properties — visainfinitehotels.com',perks:['breakfast','upgrade','credit','wifi','checkinout','vip'],credit:'$25 F&B + extra ~$75 Infinite amenity',minStay:null,notes:'All 7 Signature benefits PLUS an 8th exclusive Infinite amenity (~$75 additional F&B or hotel-selected perk). Includes Chase Sapphire Reserve®, Sapphire Reserve for Business℠, and other Visa Infinite cards.'},
-  {id:26,name:'Visa Signature® — Luxury Hotel Collection',program:'Visa',type:'card',icon:'ti-credit-card',hotels:'Select Visa Luxury Hotel Collection properties — visasignaturehotels.com',perks:['breakfast','upgrade','credit','wifi','checkinout','vip'],credit:'$25 F&B',minStay:null,notes:'VIP guest status, room upgrade on arrival when available, continental breakfast for two daily, free WiFi, $25 F&B credit, late checkout up to 3pm on request, best available rate guarantee.'},
-  {id:30,name:'Bilt Home Away From Home',program:'Bilt Rewards',type:'bilt',icon:'ti-home',hotels:'2,000+ curated luxury properties — Le Sirenuse, Raffles Singapore, Auberge du Soleil, Ritz-Carlton, Park Hyatt, Rosewood, and more',perks:['breakfast','upgrade','credit','checkinout','points','concierge'],credit:'Up to $100',minStay:'2 nights when using Bilt Cash/credits',notes:'Gold & Platinum members — no card required. Powered by Virtuoso. Chain hotels (Hyatt, Marriott, Hilton, IHG) book as direct bookings — earn hotel points + elite nights. Earn 2x Bilt Points on all bookings.'},
-  {id:27,name:'Virtuoso',program:'Standalone — book via travel advisor',type:'standalone',icon:'ti-world',hotels:'Thousands of luxury hotels + cruise lines worldwide',perks:['breakfast','upgrade','checkinout','vip','credit','concierge'],credit:'Varies by property',minStay:null,notes:'Full breakfast vs continental with Amex FHR. Book at virtuoso.com with advisor name. Extensive cruise extras including shipboard credits, shore excursions, and dedicated hosts.'},
+const PROGRAMS=[
+  {id:7,name:'Belmond Bellini',program:'Belmond',type:'hotel',icon:'🚂',
+   keywords:'belmond orient express cipriani caruso grand hotel europe la residencia maroma reids palace el encanto hiram bingham royal scotsman bellini venice train river cruise',
+   brands:['Belmond Hotel Caruso (Ravello, Italy)','Belmond Hotel Cipriani (Venice)','Belmond Grand Hotel Europe (St. Petersburg)','Belmond La Residencia (Mallorca)','Belmond Maroma Resort & Spa (Mexico)','Belmond Reid\'s Palace (Madeira)','Belmond El Encanto (Santa Barbara)','Venice Simplon-Orient-Express (train)','Belmond Hiram Bingham (Peru train)','Belmond Royal Scotsman (Scotland train)','Belmond River Cruises (Europe)'],
+   perks:['breakfast','upgrade','credit','wifi','vip'],
+   credit:'Up to $200 on-property credit per stay',
+   creditDetail:'$200 fully flexible credit — usable on F&B, spa, activities, or room charges. For total bookings of $5,000+, an additional $500 Belmond gift voucher is issued, redeemable on any Belmond product with a minimum new booking of $2,500.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). The advisor contacts the property directly to attach Bellini status to the reservation at time of booking.',
+   zachNote:'One of the most versatile programs — covers unique travel experiences like the Venice Simplon-Orient-Express and Hiram Bingham train, not just hotels. The $500 voucher on $5,000+ stays is real money back on a honeymoon or anniversary trip.'},
+  {id:8,name:'Dorchester Diamond Club',program:'Dorchester Collection',type:'hotel',icon:'💎',
+   keywords:'dorchester beverly hills hotel bel air 45 park lane coworth park le meurice plaza athenee hotel eden principe savoia baur au lac diamond club',
+   brands:['The Beverly Hills Hotel','Hotel Bel-Air (Los Angeles)','The Dorchester (London)','45 Park Lane (London)','Coworth Park (Berkshire, UK)','Le Meurice (Paris)','Hôtel Plaza Athénée (Paris)','Hotel Eden (Rome)','Hotel Principe di Savoia (Milan)','Hotel Baur au Lac (Zurich)'],
+   perks:['breakfast','upgrade','credit','wifi','vip','checkinout'],
+   credit:'$100 rooms / $100 per night for suites',
+   creditDetail:'$100 on-property credit for standard room bookings. For suite bookings, $100 credit per night of the stay — stacks significantly on multi-night suite stays. Credit is fully flexible: F&B, spa, or room charges. Unlimited internet on all devices included.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). Request Diamond Club rate at booking. A 24/7 Diamond Club Ambassador is assigned to your stay.',
+   zachNote:'The per-night suite credit is exceptional — a 4-night suite at The Dorchester generates $400 in credits. Direct access to the General Manager is a genuine differentiator for resolving any issues instantly.'},
+  {id:9,name:'Four Seasons Preferred Partner',program:'Four Seasons',type:'hotel',icon:'🍃',
+   keywords:'four seasons george v maui bali orlando park lane maldives riyadh tokyo rabat puerto rico punta mita los cabos bora bora preferred partner',
+   brands:['All Four Seasons Hotels & Resorts worldwide — 120+ properties','Four Seasons Resort Maui at Wailea','Four Seasons Hotel George V (Paris)','Four Seasons Resort Bali at Sayan & Jimbaran Bay','Four Seasons Hotel New York Downtown','Four Seasons Resort Orlando at Walt Disney World Resort','Four Seasons Hotel London at Park Lane','Four Seasons Resort Maldives at Kuda Huraa','Four Seasons Hotel Riyadh','Four Seasons Hotel Tokyo at Marunouchi'],
+   perks:['breakfast','upgrade','vip','nowalk'],
+   credit:null,
+   creditDetail:'No cash credit, but full American breakfast for two daily (vs. continental with Amex FHR) — typically worth $80–$130/day per couple at Four Seasons properties. The no-walk guarantee and priority room inventory access are operational perks with real value at sold-out properties.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Must book via travel advisor (Classic Travel). Benefits cannot be added after check-in — must be attached at booking. Advisor calls or emails property to confirm Preferred Partner attachment.',
+   zachNote:'The breakfast upgrade over Amex FHR is the headline difference — full cooked breakfast with eggs, proteins, and sides vs. a pastry basket and coffee. On a 5-night trip, that\'s $500+ in additional food value for two people.'},
+  {id:4,name:'Hilton for Luxury',program:'Hilton',type:'hotel',icon:'🏨',
+   keywords:'waldorf astoria waldorf-astoria conrad lxr hilton luxury impresario honors honolulu maldives ithaafushi bora bora',
+   brands:['Waldorf Astoria Hotels & Resorts (worldwide — 30+ properties)','LXR Hotels & Resorts (luxury independent collection)','Conrad Hotels & Resorts (worldwide — 40+ properties)','Notable: Waldorf Astoria New York, Waldorf Astoria Maldives Ithaafushi, Conrad Bora Bora Nui, Conrad Tokyo'],
+   perks:['breakfast','upgrade','credit','points'],
+   credit:'$100 on-property credit per stay',
+   creditDetail:'$100 flexible on-property credit (F&B, spa, or hotel charges). Double Hilton Honors base points on the entire stay — on top of any elite tier bonus multiplier. Points count toward elite status qualification.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). Provide Hilton Honors number — points and elite night credits still earned.',
+   zachNote:'Doubling Hilton points on already-expensive Waldorf stays adds up significantly for Hilton Diamond chasers. The $100 credit at a Waldorf Astoria spa barely covers one treatment — best applied to dining.'},
+  {id:3,name:'Hyatt Privé',program:'Hyatt',type:'hotel',icon:'🏨',
+   keywords:'park hyatt andaz grand hyatt hyatt regency alila joie de vivre thompson miraval ziva zilara amr secrets dreams breathless zoetry sunscape prive world of hyatt globalist',
+   brands:['Park Hyatt (worldwide — 45+ properties)','Andaz Hotels (worldwide — 25+ properties)','Grand Hyatt (worldwide — 50+ properties)','Hyatt Regency (worldwide — 200+ properties)','Alila Hotels & Resorts','Joie de Vivre Hotels (US boutique)','Thompson Hotels','Miraval Resorts & Spas (wellness)','Hyatt Ziva (all-inclusive, families)','Hyatt Zilara (all-inclusive, adults-only)','AMR Collection (Secrets, Dreams, Breathless, Zoëtry, Sunscape)'],
+   perks:['breakfast','upgrade','credit','checkinout','vip'],
+   credit:'$50–$100 on-property credit (varies by brand)',
+   creditDetail:'Park Hyatt, Andaz, Alila, Thompson: $100 credit per stay. Grand Hyatt, Hyatt Regency: $50–$100 depending on market/property. All-inclusive properties: credit applied toward room or upgrade differential. All credits are flexible — F&B, spa, or room charges.',
+   minStay:'2 nights minimum (most brands); 4 nights for some resort brands',
+   rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). Provide World of Hyatt number. Upgrade confirmed within 24 hours of booking — not just at check-in.',
+   zachNote:'The 24-hour upgrade confirmation is the hidden gem — most programs only upgrade at check-in. Zach stacked Privé with Globalist complimentary suite upgrades at Grand Hyatt Hong Kong and got a corner suite both times.'},
+  {id:5,name:'IHG Destined',program:'IHG Hotels & Resorts',type:'hotel',icon:'🏨',
+   keywords:'intercontinental kimpton regent ihg destined one rewards luxury',
+   brands:['InterContinental Hotels & Resorts (worldwide — 215+ properties)','Kimpton Hotels & Restaurants (outside US — 30+ properties)','Regent Hotels & Resorts (worldwide — 10 properties)','Notable: InterContinental Paris Le Grand, InterContinental Hong Kong, Regent Singapore, Kimpton De Witt Amsterdam'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','nowalk'],
+   credit:'$100 on-property amenity value',
+   creditDetail:'$100 value amenity — either a $100 credit or equivalent in-kind (spa treatment, dining experience, or activity) depending on property preference. Guaranteed 2pm late checkout at all participating properties. Free wifi on all devices throughout stay.',
+   minStay:'2 nights minimum at all Luxury tier properties',
+   rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). 2-night minimum required. IHG One Rewards number attached — points and elite nights still earned.',
+   zachNote:'The Regent category is underrated — Regent Singapore and Regent Hong Kong deliver amenity packages that often exceed the listed $100 value. Guaranteed late checkout is operationally significant for afternoon international departures.'},
+  {id:6,name:'IHG Lifestyle',program:'IHG Hotels & Resorts',type:'hotel',icon:'🏨',
+   keywords:'hotel indigo kimpton ihg lifestyle one rewards',
+   brands:['Hotel Indigo (worldwide — 130+ boutique hotels)','Kimpton Hotels & Restaurants (US locations only — 70+ properties)','Notable: Kimpton Hotel Palomar Chicago, Hotel Indigo London Tower Hill, Kimpton Muse Hotel New York'],
+   perks:['upgrade','credit','checkinout','wifi'],
+   credit:'$50 on-property credit',
+   creditDetail:'$50 flexible on-property credit (F&B, spa, or room charges). Room upgrade based on availability at check-in. Space-available early check-in and late checkout. Welcome amenity: bottled water, fresh fruit, and snacks in room on arrival. Free wifi included.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). IHG One Rewards number attached — points and elite nights still earned.',
+   zachNote:'Kimpton is one of the best value plays in this tier — the welcome amenity is genuine and $50 covers a meal easily at most Kimpton restaurant bars. Kimpton\'s pet-friendly policy and honor bar add to the experience.'},
+  {id:10,name:'Langham Couture',program:'Langham Hotels & Resorts',type:'hotel',icon:'🏨',
+   keywords:'langham couture london new york chicago boston hong kong sydney auckland shenzhen cordis',
+   brands:['The Langham, London','The Langham, New York, Fifth Avenue','The Langham, Chicago','The Langham, Boston','The Langham, Hong Kong','The Langham, Sydney','The Langham, Auckland','The Langham, Shenzhen','The Langham, Shanghai Xintiandi','Cordis Hotels & Resorts (Langham sister brand — 5 properties)'],
+   perks:['upgrade','checkinout','wifi'],
+   credit:null,
+   creditDetail:'No cash credit, but the 6-hour flexible arrival/departure window has meaningful value — choose early check-in OR late checkout based on your itinerary. Welcome drink on arrival. Complimentary wifi throughout stay. Room upgrade when available at check-in.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel).',
+   zachNote:'The 6-hour flexible time window is genuinely useful for long-haul itineraries — if you land at 7am on a red-eye, you can request early check-in; if your flight departs at 9pm, you can stay until 6pm. Saves the cost of a day-use room.'},
+  {id:11,name:'Mandarin Oriental Fan Club',program:'Mandarin Oriental',type:'hotel',icon:'🌸',
+   keywords:'mandarin oriental fan club hong kong new york paris barcelona bangkok singapore tokyo marrakech prague hyde park geneva jumeira dubai',
+   brands:['Mandarin Oriental, Hong Kong','Mandarin Oriental, New York','Mandarin Oriental, Paris','Mandarin Oriental, Barcelona','Mandarin Oriental, Bangkok','Mandarin Oriental, Singapore','Mandarin Oriental, Tokyo','Mandarin Oriental, Marrakech','Mandarin Oriental, Prague','Mandarin Oriental Hyde Park, London','Mandarin Oriental, Geneva','Mandarin Oriental Jumeira, Dubai'],
+   perks:['breakfast','upgrade','credit','wifi','vip'],
+   credit:'$100 F&B or Spa credit (your choice)',
+   creditDetail:'$100 credit applied to either F&B outlets or spa services — chosen at time of booking or on arrival. Must be used during the stay; not carried over. Complimentary breakfast for two daily. Priority waitlist clearance for sold-out dates. Personalized welcome amenity arranged by advisor in advance.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). Advisor pre-arranges the personalized welcome amenity with the property.',
+   zachNote:'The spa credit at MO Hong Kong or Bangkok is genuinely meaningful — the spas at Mandarin Oriental properties are world-class. A $100 spa credit covers a 60-minute treatment at most properties and gets you in the door for the facilities.'},
+  {id:1,name:'Marriott STARS',program:'Marriott Bonvoy',type:'hotel',icon:'⭐',
+   keywords:'marriott stars ritz carlton ritz-carlton st regis saint regis luxury collection edition bvlgari bulgari bonvoy titanium ambassador maldives fari island st regis bora bora',
+   brands:['Bvlgari Hotels & Resorts (10 properties worldwide)','Edition Hotels (worldwide — 25+ properties)','The Luxury Collection (worldwide — 115+ properties)','The Ritz-Carlton Hotels & Resorts (worldwide — 115+ properties)','The Ritz-Carlton Reserve (ultra-luxury — 7 properties)','St. Regis Hotels & Resorts (worldwide — 50+ properties)','Notable: Ritz-Carlton Maldives Fari Islands, St. Regis Bora Bora, Bvlgari Dubai, Edition Barcelona'],
+   perks:['breakfast','upgrade','credit','checkinout','vip','nowalk'],
+   credit:'$100 on-property credit per stay',
+   creditDetail:'$100 flexible credit — F&B, spa, or room charges. Breakfast varies by property: full cooked breakfast at Ritz-Carlton and St. Regis; continental at Edition and most Luxury Collection properties. Marriott Bonvoy points and elite nights earned on stay.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). Provide Marriott Bonvoy number. No-walk guarantee means the property cannot walk you to another hotel even when oversold.',
+   zachNote:'Zach has used STARS at Ritz-Carlton properties multiple times and received genuine room upgrades both times. The no-walk policy is especially valuable at sold-out resort properties during peak season — you\'re guaranteed your room category.'},
+  {id:2,name:'Marriott Luminous',program:'Marriott Bonvoy',type:'hotel',icon:'✨',
+   keywords:'marriott luminous autograph collection jw marriott le meridien renaissance w hotels westin tribute portfolio bonvoy',
+   brands:['Autograph Collection Hotels (worldwide — 200+ independent properties)','JW Marriott Hotels & Resorts (worldwide — 115+ properties)','Le Méridien Hotels & Resorts (worldwide — 115+ properties)','Renaissance Hotels (worldwide — 160+ properties)','W Hotels (worldwide — 60+ properties)','The Westin Hotels & Resorts (worldwide — 230+ properties)','Tribute Portfolio (independent collection)','Notable: JW Marriott Le Méridien Dubai, W Barcelona, Westin Paris Vendôme'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],
+   credit:'$100 credit at select participating hotels',
+   creditDetail:'$100 on-property credit at participating Luminous properties — not all locations participate; confirm at booking. Complimentary daily breakfast for two at all properties. Free basic wifi included. Marriott Bonvoy points and elite nights earned on stay.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). Provide Marriott Bonvoy number. Confirm credit availability at specific property when booking.',
+   zachNote:'JW Marriott properties are a strong pick for Luminous — the breakfast at a JW brunch restaurant can be worth $60–$80/day for two. The Autograph Collection covers some genuinely unique independent properties that otherwise offer no VIP programs.'},
+  {id:12,name:'Oetker Pearl Partner',program:'Oetker Collection',type:'hotel',icon:'👑',
+   keywords:'oetker le bristol paris lanesborough brenners park hotel palais namaskar jumby bay island il pellicano fregate island eden rock chateau saint martin pearl partner',
+   brands:['Le Bristol Paris (Palace hotel)','The Lanesborough, London','Brenners Park-Hotel & Spa (Baden-Baden, Germany)','Palais Namaskar (Marrakech)','Jumby Bay Island (Antigua — private island)','Il Pellicano (Porto Ercole, Tuscany)','Fregate Island Private (Seychelles)','Eden Rock (St. Barths)','Château Saint-Martin & Spa (Vence, France)'],
+   perks:['breakfast','upgrade','credit','wifi','vip','checkinout'],
+   credit:'€85 for rooms / €170 for suites',
+   creditDetail:'€85 on-property credit for standard room bookings. €170 credit for suite bookings. Credit is fully flexible — F&B, spa, activities, or room charges. Welcome bottle of Champagne on arrival. "Best room within category" guaranteed at time of booking, not just at check-in.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). "Best room in category" confirmed at booking — request specific view or floor preferences at this stage.',
+   zachNote:'Le Bristol Paris and The Lanesborough are among Europe\'s most prestigious addresses. The guaranteed best-room-in-category is unusual — most programs only promise an upgrade attempt at check-in. Oetker properties are small collections of truly exceptional independent hotels.'},
+  {id:13,name:'Peninsula Pen Club',program:'The Peninsula Hotels',type:'hotel',icon:'🏙',
+   keywords:'peninsula hong kong new york beverly hills chicago tokyo beijing bangkok shanghai paris london istanbul pen club',
+   brands:['The Peninsula Hong Kong (flagship)','The Peninsula New York','The Peninsula Beverly Hills','The Peninsula Chicago','The Peninsula Tokyo','The Peninsula Beijing','The Peninsula Bangkok','The Peninsula Shanghai','The Peninsula Paris','The Peninsula London (newest property)','The Peninsula Istanbul (2024)'],
+   perks:['breakfast','upgrade','checkinout','vip'],
+   credit:null,
+   creditDetail:'No cash credit, but "Peninsula Time" — flexible early check-in or late checkout based on availability — has genuine value on international itineraries. Complimentary breakfast for two daily. VOIP phone loaned for use during the stay at select properties. Priority table reservations at Peninsula restaurants.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). VIP status attached to reservation. Request specific floor or room preferences with advisor.',
+   zachNote:'Zach has used Pen Club 3x — Hong Kong, Bangkok, and New York. The breakfast is exceptional at every property. The "Peninsula Time" late checkout has saved him on red-eye departure days when he needed to shower and change after a long flight connection.'},
+  {id:14,name:'Preferred Hotels Platinum Partner',program:'Preferred Hotels & Resorts',type:'hotel',icon:'🏨',
+   keywords:'preferred hotels resorts lvx legend boutique connect residences',
+   brands:['L.V.X. Collection (ultra-luxury independents)','Legend Collection (historic/iconic properties)','Preferred Boutique (intimate, under 100 rooms)','Connect Collection (lifestyle and design hotels)','Residences by Preferred (serviced apartments)','650+ properties across 85 countries — primarily independent luxury hotels not in major chains'],
+   perks:['breakfast','upgrade','credit','wifi','checkinout'],
+   credit:'$75 on-property credit',
+   creditDetail:'$75 flexible credit — resort fees, F&B, spa, activities, or room charges. Complimentary breakfast for two daily. Free wifi. Room upgrade based on availability. Early check-in and late checkout space-available.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel).',
+   zachNote:'Preferred Hotels is valuable specifically for independent luxury properties not affiliated with major chains — properties that don\'t appear in other VIP programs. If you\'re looking at a one-of-a-kind boutique hotel, check if it\'s in the Preferred network first.'},
+  {id:15,name:'Relais & Châteaux Preferred Partner',program:'Relais & Châteaux',type:'hotel',icon:'🏰',
+   keywords:'relais chateaux la colombe dor inn at little washington borgo san felice ashford castle blackberry farm huka lodge bushmans kloof',
+   brands:['580+ owner-operated properties across 60 countries','Typically small châteaux, manor houses, country estates, and fishing lodges','Famous properties: La Colombe d\'Or (France), The Inn at Little Washington (Virginia, USA), Borgo San Felice (Tuscany), Ashford Castle (Ireland), Blackberry Farm (Tennessee, USA), Huka Lodge (New Zealand), Bushmans Kloof (South Africa)'],
+   perks:['breakfast','upgrade','vip'],
+   credit:null,
+   creditDetail:'No cash credit, but complimentary breakfast and VIP staff recognition are consistent. Many properties provide personalized welcome amenities (local wines, artisanal products, estate-grown produce) as owner-directed VIP gestures. The level of personalization varies significantly by property — owner-run estates typically deliver exceptional personal attention.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel).',
+   zachNote:'These are properties where the owner might personally cook your breakfast or guide you on a private estate walk. The VIP treatment here is about experience and personal attention, not credits. Best for travelers who value authenticity and unique character over amenity points.'},
+  {id:16,name:'Rocco Forte Knights',program:'Rocco Forte Hotels',type:'hotel',icon:'🛡',
+   keywords:'rocco forte balmoral browns hotel charles hotel de russie savoy villa kennedy hotel amigo verdura resort villa igiea edinburgh rome florence munich brussels sicily knights',
+   brands:['The Balmoral (Edinburgh, Scotland)','Brown\'s Hotel (London)','The Charles Hotel (Munich)','Hotel de Russie (Rome)','Hotel Savoy (Florence)','Villa Kennedy (Frankfurt)','Hotel Amigo (Brussels)','Verdura Resort (Sicily)','Hotel d\'Inghilterra (Rome)','Villa Igiea (Palermo, Sicily)'],
+   perks:['breakfast','upgrade','credit','wifi','checkinout','vip'],
+   credit:'$100 rooms / $200 suites (2-night min for suite credit)',
+   creditDetail:'$100 on-property credit for standard room bookings. $200 credit for suite bookings with a minimum 2-night stay. 20% discount on ALL spa services throughout the stay (not just a fixed credit). Complimentary breakfast for two daily. Free wifi. Space-available early check-in and late checkout.',
+   minStay:'2 nights for suite credit; no minimum for standard room credit',
+   rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel).',
+   zachNote:'The 20% spa discount throughout the entire stay is unusual — most programs give a fixed credit, but 20% off total spa spend can far exceed $100 at Rocco Forte properties where the spas are genuinely world-class. At Verdura Resort in Sicily, the spa and golf are exceptional.'},
+  {id:17,name:'Rosewood Elite',program:'Rosewood Hotels & Resorts',type:'hotel',icon:'🌹',
+   keywords:'rosewood elite london hong kong mansion turtle creek castiglion del bosco mayakoba sand hill washington baha mar vienna doha miramar beach phuket miyakojima mandarina',
+   brands:['Rosewood London','Rosewood Hong Kong','Rosewood Mansion on Turtle Creek (Dallas)','Rosewood Castiglion del Bosco (Tuscany, Italy)','Rosewood Mayakoba (Riviera Maya, Mexico)','Rosewood Sand Hill (Menlo Park, California)','Rosewood Washington D.C.','Rosewood Baha Mar (Nassau, Bahamas)','Rosewood Vienna','Rosewood Doha','Rosewood Miramar Beach (Santa Barbara)','Rosewood Phuket'],
+   perks:['breakfast','upgrade','credit','checkinout','vip','nowalk'],
+   credit:'Up to $100 on-property credit',
+   creditDetail:'Up to $100 on-property credit per stay (F&B, spa, activities, or room charges). Complimentary breakfast for two daily. No-walk guarantee. On-property Elite Representative assigned for the duration of the stay — a named contact available for special requests, reservations, and preferences.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). On-property Elite Rep is notified of your arrival and preferences in advance by the advisor.',
+   zachNote:'The dedicated Elite Rep is the standout differentiator — having a named contact at the property who knows your preferences before you arrive is the closest thing to a personal concierge in any program on this list. Rosewood Castiglion del Bosco and Rosewood Mayakoba are two of Zach\'s favorite Elite properties.'},
+  {id:19,name:'Shangri-La Luxury Circle',program:'Shangri-La Hotels & Resorts',type:'hotel',icon:'🏯',
+   keywords:'shangri-la shangri la kerry hotel jen island shangri-la paris singapore tokyo bosphorus istanbul hong kong muscat luxury circle golden circle',
+   brands:['Shangri-La Hotels & Resorts (worldwide — 100+ properties)','Kerry Hotels (lifestyle sister brand — 5 properties)','Hotel Jen (affordable sister brand — select locations)','Notable: Shangri-La Paris, Shangri-La Singapore, Shangri-La Tokyo, Shangri-La Bosphorus Istanbul, Island Shangri-La Hong Kong, Shangri-La Al Husn Muscat','Shangri-La Barr Al Jissah (Oman)','Kerry Hotel Hong Kong'],
+   perks:['breakfast','upgrade','credit','checkinout','nowalk'],
+   credit:'$100 or 10% of Average Daily Rate (whichever is higher)',
+   creditDetail:'The credit equals whichever is greater: a flat $100 or 10% of the Average Daily Rate for the stay. At a $1,500/night suite, the credit becomes $150 automatically. At a $2,000/night property, it becomes $200. Complimentary breakfast for two daily. No-walk guarantee.',
+   minStay:'Minimum spend requirement at many properties — confirm at booking',
+   rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel). Upgrade is confirmed based on space availability at time of booking — not just at check-in.',
+   zachNote:'The scaling credit formula is the most sophisticated on this list. Unlike flat $100 credits, the 10% formula means expensive stays get proportionally better value. For a honeymoon suite at Shangri-La Paris, the credit could reach $250–$300 per stay.'},
+  {id:18,name:'Sofitel STEP Program',program:'Sofitel / MGallery',type:'hotel',icon:'🗼',
+   keywords:'sofitel step mgallery sofitel legend metropole hanoi faubourg chicago old cataract aswan pont royal le marois',
+   brands:['Sofitel Hotels & Resorts (worldwide — 120+ properties)','MGallery by Sofitel (boutique collection — 100+ properties)','Notable: Sofitel Paris Le Faubourg, Sofitel Legend Metropole Hanoi, Sofitel Chicago Magnificent Mile, Sofitel Legend Old Cataract (Aswan), MGallery Pont Royal Paris, MGallery Le Marois Paris'],
+   perks:['breakfast','upgrade','wifi','checkinout','nowalk'],
+   credit:null,
+   creditDetail:'No cash credit. Complimentary breakfast for two daily. No-walk guarantee at all participating properties. Space-available early check-in. Guaranteed late checkout (time varies by property — confirm at booking). Free wifi throughout stay.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via travel advisor (Classic Travel).',
+   zachNote:'Sofitel Legend Metropole Hanoi is one of the most atmospheric hotels in Southeast Asia — the STEP perks there make an exceptional trip even better. The MGallery boutique collection includes some genuinely unique properties in France and Europe that deliver authentic local character.'},
+ 
+  // ─── NEW: Accor Preferred Hera ───
+  {id:40,name:'Accor Preferred Hera',program:'Accor Hotels & Resorts',type:'hotel',icon:'🏨',
+   keywords:'accor hera raffles faena orient express rixos emblems delano sls raffles paris miami beach singapore london owo doha mgallery',
+   brands:['Sofitel Legend','Sofitel (select properties)','Faena Hotels','Raffles Hotels & Resorts','Orient Express Hotels','Rixos Hotels','Emblems Collection','MGallery (select)','Delano Hotels','SLS Hotels','Notable: Raffles Paris, Faena Miami Beach, Raffles Singapore, Raffles London at The OWO, Raffles Doha'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],
+   credit:'Varies by property ($75–$150 typical)',
+   creditDetail:'Hera is Accor\'s "by invitation only" preferred partner program for luxury travel agencies. Benefits vary by property but typically include: on-property credit ($75–$150), complimentary breakfast for two, room upgrade on arrival, early check-in/late checkout, VIP recognition. Raffles properties frequently include afternoon tea or additional F&B amenities.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via Classic Travel (classictravel.com/zachary). Hera rates attached at time of booking.',
+   zachNote:'Raffles properties under Accor Hera are some of the most storied hotels in the world — Raffles Singapore, Raffles Paris, and Raffles London at The OWO are icons. Hera unlocks perks that aren\'t available when booking directly.'},
+  // ─── NEW: Aman ───
+  {id:41,name:'Aman — Classic Travel Partner',program:'Aman Hotels & Resorts',type:'hotel',icon:'🧘',
+   keywords:'aman amanpuri amangiri amanjiwo amansara aman tokyo aman venice sveti stefan amanzoe amanpulo amandari amanfayun summer palace nai lert amanyara amanera amangani amanwella amanbagh aman-i-khas amanemu amandayan amantaka amanwana amanoi amangalla amanjena amanruya resorts junkies',
+   brands:['Amanpuri (Phuket, Thailand)','Amangiri (Utah, USA)','Amanjiwo (Java, Indonesia)','Amansara (Siem Reap, Cambodia)','Aman Tokyo','Aman Venice','Aman Sveti Stefan (Montenegro)','Amanzoe (Greece)','Amanpulo (Philippines)','Amandari (Bali)','Amanfayun (Hangzhou)','Aman Summer Palace (Beijing)','Aman Nai Lert (Bangkok)','Amanena (Dominican Republic)','Amanyara (Turks & Caicos)','35 resorts across 20 countries'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],
+   credit:'Resort credit (varies by property)',
+   creditDetail:'Aman has no traditional loyalty program — Amanjunkies return for the experience, not points. Classic Travel\'s preferred partner status unlocks: daily breakfast for two, room upgrade on arrival, hotel/resort credit, early check-in/late checkout when available, complimentary wifi. Perks can be combined with Aman\'s own seasonal promotions.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via Classic Travel (classictravel.com/zachary). Aman rates are not publicly available — exclusive to trusted Virtuoso-affiliated travel partners.',
+   zachNote:'Aman properties are among the most private and serene luxury experiences on earth. No loyalty program by design — but booking through Classic Travel gets you the Virtuoso perks that make an already special stay exceptional. Amangiri in Utah and Amanjiwo in Java are bucket-list properties.'},
+  // ─── NEW: Auberge Resorts ───
+  {id:42,name:'Auberge Resorts & Residences',program:'Auberge Resorts Collection',type:'hotel',icon:'🌿',
+   keywords:'auberge du soleil calistoga ranch solage mayflower inn brush creek ranch commodore perry bishop lodge hacienda altagracia susurros del corazon chileno bay etereo alhaus mukul napa valley',
+   brands:['Auberge du Soleil (Napa Valley)','Calistoga Ranch (Napa Valley)','Solage (Calistoga)','Mayflower Inn & Spa (Connecticut)','Brush Creek Ranch (Wyoming)','Commodore Perry Estate (Austin)','Bishop\'s Lodge (Santa Fe)','Hacienda AltaGracia (Costa Rica)','Susurros del Corazón (Mexico)','Chileno Bay Resort (Los Cabos)','Etéreo (Riviera Maya)','Alhaus (Colombia)','Mukul (Nicaragua)'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],
+   credit:'$100 on-property credit (typical)',
+   creditDetail:'VIP recognition and value-added benefits at all Auberge properties. Typically includes: $100 flexible on-property credit, room upgrade on arrival, complimentary breakfast, early check-in/late checkout, welcome amenity. Auberge properties are intimate — VIP recognition from property leadership is genuine.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via Classic Travel (classictravel.com/zachary).',
+   zachNote:'Auberge du Soleil in Napa is the flagship and one of California\'s finest wine country experiences. The collection skews heavily US and Latin America — perfect for domestic luxury travel where other VIP programs have limited coverage.'},
+  // ─── NEW: Jumeirah Passport to Luxury ───
+  {id:43,name:'Jumeirah Passport to Luxury',program:'Jumeirah Hotels & Resorts',type:'hotel',icon:'🌙',
+   keywords:'jumeirah burj al arab burj-al-arab mina salam al qasr zabeel saray marsa al arab al naseem dar al masyaf capri palace muscat bay saadiyat island carlton tower passport luxury dubai',
+   brands:['Burj Al Arab Jumeirah (Dubai)','Jumeirah Beach Hotel (Dubai)','Jumeirah Al Qasr (Dubai)','Jumeirah Mina A\'Salam (Dubai)','Jumeirah Zabeel Saray (Dubai)','Jumeirah Marsa Al Arab (Dubai)','Jumeirah Al Naseem (Dubai)','Jumeirah Dar Al Masyaf (Dubai)','Capri Palace Jumeirah (Italy)','Jumeirah Muscat Bay (Oman)','Jumeirah Saadiyat Island (Abu Dhabi)','Jumeirah Carlton Tower (London)'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],
+   credit:'$100 on-property credit (typical)',
+   creditDetail:'Exclusive perks at Jumeirah hotels and resorts via the Passport to Luxury preferred partner program. Typically includes: complimentary breakfast for two, room upgrade on arrival when available, $100 flexible on-property credit, early check-in/late checkout, VIP status and recognition.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via Classic Travel (classictravel.com/zachary).',
+   zachNote:'The Burj Al Arab is the world\'s most iconic hotel — VIP perks here include butler service on every floor and extraordinary amenities. Jumeirah\'s Dubai portfolio is the deepest concentration of luxury in any single city.'},
+  // ─── NEW: Kempinski Club 1897 ───
+  {id:44,name:'Kempinski Club 1897',program:'Kempinski Hotels',type:'hotel',icon:'🏰',
+   keywords:'kempinski club 1897 hotel adlon berlin corvinus budapest bristol warsaw mall emirates muscat national lucerne portoroz',
+   brands:['Hotel Adlon Kempinski (Berlin)','Kempinski Hotel Corvinus (Budapest)','Kempinski Hotel Bristol (Warsaw)','Kempinski Hotels Dubai','Kempinski Hotel Mall of the Emirates (Dubai)','Kempinski Hotel Muscat','Grand Hotel National Kempinski (Lucerne)','Kempinski Palace Portorož (Slovenia)','Kempinski Hotels China (multiple)','75+ hotels in 34 countries'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],
+   credit:'$100 on-property credit (typical)',
+   creditDetail:'Club 1897 (named for Kempinski\'s founding year) is an exclusive preferred partner program. Benefits include: daily breakfast for two, room upgrade on arrival, on-property credit, early check-in/late checkout when available, VIP status throughout stay. Kempinski is Europe\'s oldest luxury hotel group.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via Classic Travel (classictravel.com/zachary).',
+   zachNote:'Hotel Adlon Kempinski in Berlin — steps from the Brandenburg Gate — is one of Europe\'s great grand hotels. Club 1897 unlocks genuinely exceptional VIP treatment at Kempinski\'s European flagships that can\'t be accessed when booking direct.'},
+  // ─── NEW: Leading Hotels Leaders Club ───
+  {id:45,name:'Leading Hotels — Leaders Club',program:'The Leading Hotels of the World',type:'hotel',icon:'🌐',
+   keywords:'leading hotels world lhw leaders club gleneagles alpina gstaad tresanton borgo egnazia hacienda benazuza capella singapore estoril palacio intercontinental',
+   brands:['400+ properties across 80+ countries','Torre di Cala Piccola (Tuscany)','The Gleneagles Hotel (Scotland)','Palácio Estoril Hotel (Portugal)','The Alpina Gstaad (Switzerland)','Hotel Tresanton (Cornwall, UK)','Hacienda Benazuza (Seville)','Capella Singapore','Borgo Egnazia (Puglia, Italy)','InterContinental (select LHW members)','Independent luxury urban and resort properties globally'],
+   perks:['breakfast','upgrade','credit','checkinout','vip'],
+   credit:'Varies by property',
+   creditDetail:'The Leading Hotels of the World is a curated collection of independent luxury properties. Via Virtuoso affiliation, Classic Travel unlocks additional benefits beyond the standard Leaders Club rates: complimentary breakfast, room upgrade on arrival, on-property amenity credit, and VIP recognition. Benefits complement (not replace) Leaders Club loyalty program earnings.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via Classic Travel (classictravel.com/zachary) as a Virtuoso-affiliated agency.',
+   zachNote:'The LHW collection covers independent luxury properties that aren\'t affiliated with any major chain — perfect for unique destinations where Marriott, Hyatt, and Hilton simply don\'t have presence. Borgo Egnazia in Puglia and The Alpina Gstaad are exceptional standouts.'},
+  // ─── NEW: One&Only ───
+  {id:46,name:'One&Only Resorts',program:'One&Only',type:'hotel',icon:'🏝',
+   keywords:'one only one&only reethi rah maldives mandarina palmilla cape town royal mirage the palm portonovi nyungwe house gorilla nest aesthesis athens le saint geran mauritius',
+   brands:['One&Only Royal Mirage (Dubai)','One&Only The Palm (Dubai)','One&Only Reethi Rah (Maldives)','One&Only Le Saint Géran (Mauritius)','One&Only Cape Town','One&Only Mandarina (Mexico)','One&Only Palmilla (Los Cabos)','One&Only Portonovi (Montenegro)','One&Only Nyungwe House (Rwanda)','One&Only Gorilla\'s Nest (Rwanda)','One&Only Aesthesis (Athens)','12+ resorts in iconic destinations'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],
+   credit:'$100 on-property credit (typical)',
+   creditDetail:'Exclusive value-added benefits at One&Only\'s collection of ultra-luxury destination resorts. Typically includes: daily breakfast for two, room upgrade on arrival, $100 flexible on-property credit, early check-in/late checkout, curated local experiences. One&Only properties are defined by their singular destination — one extraordinary property in each iconic location.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via Classic Travel (classictravel.com/zachary).',
+   zachNote:'One&Only Reethi Rah in the Maldives and Mandarina in Mexico are two of the most spectacular resort experiences in the world. Each property is genuinely unique to its destination — these aren\'t cookie-cutter luxury. The gorilla tracking access at Nyungwe House and Gorilla\'s Nest in Rwanda is a once-in-a-lifetime addition.'},
+  // ─── NEW: Six Senses ───
+  {id:47,name:'Six Senses Resorts',program:'Six Senses Hotels Resorts Spas',type:'hotel',icon:'🌱',
+   keywords:'six senses zighy bay laamu krabey island douro valley ibiza kaplankaya rome new york fort barwara fiji con dao wellness spa',
+   brands:['Six Senses Zighy Bay (Oman)','Six Senses Laamu (Maldives)','Six Senses Krabey Island (Cambodia)','Six Senses Douro Valley (Portugal)','Six Senses Ibiza','Six Senses Kaplankaya (Turkey)','Six Senses Rome','Six Senses New York (2024)','Six Senses Fort Barwara (India)','Six Senses Fiji','Six Senses Con Dao (Vietnam)','30+ properties in 20+ countries'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],
+   credit:'$100 on-property credit (typical)',
+   creditDetail:'VIP benefits at Six Senses\' collection of wellness-focused luxury resorts. Typically includes: complimentary breakfast for two, room/villa upgrade on arrival, $100 on-property credit (applicable to spa, dining, or activities), early check-in/late checkout, welcome amenity. Six Senses is renowned for transformative spa programs and sustainability focus.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via Classic Travel (classictravel.com/zachary).',
+   zachNote:'Six Senses Zighy Bay in Oman — accessible only by paraglide, boat, or 4x4 — is one of the most dramatic arrivals in luxury travel. The Six Senses spa programs are the most comprehensive wellness offerings in luxury hospitality. Six Senses Rome and New York are bringing the brand to urban settings for the first time.'},
+  // ─── NEW: SLH withIN ───
+  {id:48,name:'SLH withIN',program:'Small Luxury Hotels of the World',type:'hotel',icon:'🏡',
+   keywords:'slh within small luxury hotels chewton glen pig hotels esperanza kokomo deplar farm iniala cap rocat coco de mer singita castleton soneva fushi boutique independent',
+   brands:['500+ boutique luxury hotels in 90+ countries','No branded hotels — all independently owned','Chewton Glen (Hampshire, UK)','The Pig Hotels (UK chain)','Esperanza (Los Cabos)','Kokomo Private Island (Fiji)','Deplar Farm (Iceland)','Iniala Harbour House (Malta)','Cap Rocat (Mallorca)','Coco de Mer (Seychelles)','Singita Castleton (South Africa)','Soneva Fushi (Maldives)'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','vip'],
+   credit:'$100 on-property credit (typical)',
+   creditDetail:'SLH withIN is the preferred partner program for Small Luxury Hotels of the World. Benefits at 500+ boutique luxury properties include: daily breakfast for two, room upgrade on arrival, on-property credit, early check-in/late checkout, VIP recognition. SLH properties are owner-operated independent boutique hotels — no chain affiliations.',
+   minStay:null,rate:'Best Available Rate (BAR)',
+   booking:'Book via Classic Travel (classictravel.com/zachary).',
+   zachNote:'SLH withIN is the perfect program for travelers who actively want to avoid big hotel chains. Chewton Glen in Hampshire and Deplar Farm in Iceland are two of the most unique luxury experiences in their respective regions. 500+ independently owned properties means extraordinary variety.'},
+ 
+    {id:20,name:'American Express® Fine Hotels + Resorts®',program:'American Express',type:'card',icon:'💳',
+   keywords:'amex fine hotels resorts fhr american express platinum centurion membership rewards',
+   brands:['1,800+ luxury properties worldwide via AmexTravel.com','Four Seasons, Ritz-Carlton, Mandarin Oriental, St. Regis, Aman, Rosewood, Peninsula, Park Hyatt, Waldorf Astoria, Banyan Tree, One&Only, Belmond, Six Senses, and more','Bookable at amextravel.com or via Platinum Concierge (1-800-525-3355)'],
+   perks:['breakfast','upgrade','credit','checkinout','wifi','points'],
+   credit:'$100 on-property credit + up to $600/yr hotel credit',
+   creditDetail:'$100 flexible on-property credit per FHR stay. ADDITIONALLY: $300 semi-annual Amex hotel credit ($600/year total) applied automatically to prepaid FHR and Hotel Collection bookings on Platinum/Business Platinum cards. Guaranteed 4pm late checkout at all properties. 5x Membership Rewards on prepaid bookings. Continental breakfast for two daily.',
+   minStay:null,rate:'Prepaid rate via AmexTravel.com',
+   booking:'Book at amextravel.com with Platinum Card®, Business Platinum Card®, or Centurion® card. Or call Platinum Concierge at 1-800-525-3355.',
+   zachNote:'The $600/yr hotel credit stacks with the $100 on-property credit and effectively subsidizes 6 hotel stays per year if maximized. The 5x MR points on a $500/night hotel = 2,500 MR points per night — worth ~$30–$50 in redemption value in addition to the credits.'},
+  {id:21,name:'American Express® The Hotel Collection',program:'American Express',type:'card',icon:'💳',
+   keywords:'amex hotel collection american express gold platinum centurion membership rewards',
+   brands:['1,300+ upscale hotels via AmexTravel.com','Broader selection than FHR — includes Marriott, Hilton, Hyatt, IHG, Autograph Collection, boutique independents','Open to Gold Card®, Business Gold Card®, Platinum Card®, Business Platinum Card®, and Centurion® members'],
+   perks:['upgrade','credit','points'],
+   credit:'$100 on-property credit per stay',
+   creditDetail:'$100 on-property credit per stay (minimum 2 nights). Room upgrade on arrival when available. Earns 2x Membership Rewards (Gold/Business Gold) or 5x Membership Rewards (Platinum/Business Platinum/Centurion) on prepaid bookings. No breakfast included (unlike FHR).',
+   minStay:'2 nights minimum',
+   rate:'Prepaid rate via AmexTravel.com',
+   booking:'Book at amextravel.com with any eligible Amex card. 2-night minimum stay required for $100 credit.',
+   zachNote:'Hotel Collection is the workhorse for Gold cardholders who don\'t have FHR access. The $100 credit on 2-night stays at a wide hotel selection makes it easy to extract consistent value. Good for business travel where the Gold card earning rate on restaurants matters more than luxury perks.'},
+  {id:22,name:'Capital One Venture X — Premier Collection',program:'Capital One',type:'card',icon:'💳',
+   keywords:'capital one venture x premier collection miles',
+   brands:['Curated high-end hotels via Capital One Travel portal','Four Seasons, Waldorf Astoria, Rosewood, Park Hyatt, Belmond, Six Senses, One&Only, Aman, and more','Bookable via capitalone.com/travel'],
+   perks:['breakfast','upgrade','credit','wifi','checkinout','points'],
+   credit:'$100 on-property credit per stay',
+   creditDetail:'$100 flexible on-property credit per stay. Complimentary breakfast for two daily. Room upgrade when available. Early check-in and late checkout when available. Free wifi. Earn 10x Venture Miles on Premier Collection bookings. Hotel loyalty points AND elite nights STILL credited to your loyalty account — unlike most portal bookings.',
+   minStay:null,rate:'Capital One Travel portal rate',
+   booking:'Book via capitalone.com/travel with Venture X or Venture X Business card. Available for Venture X and Venture X Business cardholders.',
+   zachNote:'The loyalty point stacking is the big differentiator — you get the card perks AND your stay counts toward Hyatt Globalist or Marriott Titanium qualification. No other card program offers this combination as broadly.'},
+  {id:35,name:'Capital One Venture X Business — Premier Collection',program:'Capital One',type:'card',icon:'💳',
+   keywords:'capital one venture x business premier collection miles',
+   brands:['Same curation as personal Venture X Premier Collection','High-end hotels worldwide via Capital One Travel portal'],
+   perks:['breakfast','upgrade','credit','wifi','checkinout','points'],
+   credit:'$100 on-property credit per stay',
+   creditDetail:'Identical Premier Collection benefits to personal Venture X. $100 credit, breakfast, upgrade, early/late checkout, wifi, 10x miles. Hotel loyalty points and status still earned. Business card with the same hotel program access.',
+   minStay:null,rate:'Capital One Travel portal rate',
+   booking:'Book via capitalone.com/travel with Venture X Business card.',
+   zachNote:'If you have the business version, the hotel program is exactly the same as the personal Venture X — no reason not to maximize it on every qualifying business travel stay.'},
+  {id:23,name:'Capital One Venture Rewards — Lifestyle Collection',program:'Capital One',type:'card',icon:'💳',
+   keywords:'capital one venture lifestyle collection miles spark',
+   brands:['Broader hotel selection than Premier Collection — upscale and upper-upscale worldwide','Available to Venture Rewards and Spark Miles cardholders via capitalone.com/travel'],
+   perks:['upgrade','credit','wifi','checkinout','points'],
+   credit:'$50 on-property credit per stay',
+   creditDetail:'$50 on-property credit per stay. Room upgrade when available. Early check-in and late checkout when available. Free wifi. Earn 5x Venture Miles on Lifestyle Collection bookings. No breakfast included (unlike Premier Collection).',
+   minStay:null,rate:'Capital One Travel portal rate',
+   booking:'Book via capitalone.com/travel with Venture Rewards or Spark Miles card.',
+   zachNote:'A good entry point for Venture cardholders who want hotel perks without upgrading to Venture X. The $50 credit and upgrade are meaningful on business travel stays.'},
+  {id:24,name:'Chase Sapphire Reserve® — The Edit by Chase Travel℠',program:'Chase',type:'card',icon:'💳',
+   keywords:'chase sapphire reserve the edit ultimate rewards visa infinite',
+   brands:['Select luxury hotels curated by Chase Travel — access via chase.com/travel/the-edit','IHG Hotels (InterContinental, Kimpton, Regent)','Montage Hotels & Resorts','Omni Hotels & Resorts','Selected independent luxury hotels'],
+   perks:['breakfast','upgrade','credit','wifi','checkinout','points'],
+   credit:'$100 on-property credit + up to $500/yr Edit credit',
+   creditDetail:'$100 on-property credit per The Edit booking. Up to $500/year in The Edit credits (issued as 2 x $250, redeemable any time in 2026). One-time $250 credit for select Chase Travel hotels (IHG, Montage, Omni) in 2026. Earn 8x Ultimate Rewards on all Chase Travel bookings. As a Visa Infinite card, also unlocks the Visa Infinite Luxury Hotel Collection (extra 8th amenity).',
+   minStay:null,rate:'Chase Travel portal rate',
+   booking:'Book via chase.com/travel/the-edit with Chase Sapphire Reserve card. Also book Visa Infinite Luxury Hotel Collection at visainfinitehotels.com.',
+   zachNote:'The $500/yr Edit credit essentially pays for a meaningful portion of the $550 annual fee through hotel bookings. Stack with the Visa Infinite benefits on the same booking for maximum value — $100 on-property credit plus the Visa Infinite 8th amenity on applicable properties.'},
+  {id:36,name:'Chase Sapphire Reserve for Business℠ — The Edit',program:'Chase',type:'card',icon:'💳',
+   keywords:'chase sapphire reserve business the edit ultimate rewards visa infinite',
+   brands:['Same The Edit hotel curation as personal Sapphire Reserve','Select luxury hotels via Chase Travel portal'],
+   perks:['breakfast','upgrade','credit','wifi','checkinout','points'],
+   credit:'$100 on-property credit + up to $500/yr Edit credit',
+   creditDetail:'Identical Edit benefits to personal Sapphire Reserve. $100 on-property credit per stay. Up to $500/yr in The Edit credits. One-time $250 credit for select Chase Travel hotels in 2026. $795 annual fee. Visa Infinite card — access Visa Infinite Luxury Hotel Collection.',
+   minStay:null,rate:'Chase Travel portal rate',
+   booking:'Book via Chase Travel portal with Sapphire Reserve for Business card. Visa Infinite Luxury Hotel Collection at visainfinitehotels.com.',
+   zachNote:'Higher $795 annual fee vs. personal Reserve, but the same hotel program. Evaluate based on total card benefits for your business spending — the hotel perks alone don\'t justify the premium over the personal Reserve.'},
+  {id:37,name:'Citi Strata Elite℠ Card',program:'Citi',type:'card',icon:'💳',
+   keywords:'citi strata elite thankyou points',
+   brands:['Hotels bookable via Citi Travel® platform at citibanktravel.com','Broad selection — major chains and independent hotels worldwide'],
+   perks:['credit','points'],
+   credit:'$300/yr hotel credit (2-night minimum)',
+   creditDetail:'$300 annual hotel credit for prepaid stays of 2+ nights booked via Citi Travel — one of the highest flat hotel credits of any card. Earn 12x ThankYou Points on hotel bookings via Citi Travel (exceptional earning rate). $595 annual fee. Launched July 2025 — newest program on this list.',
+   minStay:'2 nights minimum for credit',
+   rate:'Prepaid rate via Citi Travel platform',
+   booking:'Book via citibanktravel.com or Citi Travel platform with Citi Strata Elite card.',
+   zachNote:'The $300 hotel credit nearly offsets the $595 annual fee on hotel spend alone. Combined with 12x ThankYou earning (worth approximately 2.4 cents per point at best-in-class transfer partners), the total return on hotel spend is exceptional for new cardholders.'},
+  {id:25,name:'Citi Prestige® Card — 4th Night Free',program:'Citi',type:'card',icon:'💳',
+   keywords:'citi prestige 4th night free thankyou fourth night',
+   brands:['Hotels bookable via thankyou.com — major chains and independents eligible','Wide selection across luxury and upscale segments'],
+   perks:['credit'],
+   credit:'Complimentary 4th night free (used up to 2x/year)',
+   creditDetail:'Book 4+ consecutive nights via thankyou.com and the 4th night is free. The credit equals the average nightly rate of the first 3 nights — not necessarily the actual 4th night rate. Maximum 2 uses per calendar year. At a $1,000/night luxury hotel, 4 nights costs ~$3,000 instead of $4,000.',
+   minStay:'4 consecutive nights minimum via thankyou.com',
+   rate:'Thankyou.com booking rate',
+   booking:'Book directly at thankyou.com with Citi Prestige card. 4-night minimum consecutive stay required. Up to 2 uses per calendar year.',
+   zachNote:'The savings are most dramatic at high-rate properties — Zach used at Waldorf Caledonian Edinburgh (saved ~$600/night) and Nun Relais Assisi (saved ~$400/night). Best strategy: use both annual instances at your two most expensive planned hotel stays of the year.'},
+  {id:38,name:'Visa Infinite® — Luxury Hotel Collection',program:'Visa',type:'card',icon:'💳',
+   keywords:'visa infinite luxury hotel collection',
+   brands:['Select Visa Luxury Hotel Collection properties — visainfinitehotels.com','Separate and broader property list than Visa Signature','Eligible cards include Chase Sapphire Reserve®, Chase Sapphire Reserve for Business℠, and other Visa Infinite-tier cards'],
+   perks:['breakfast','upgrade','credit','wifi','checkinout','vip'],
+   credit:'$25 F&B credit + exclusive ~$75 Infinite amenity (~$100 total)',
+   creditDetail:'All 7 standard Visa Signature benefits PLUS an exclusive 8th Infinite amenity — typically a $75 additional F&B credit, a curated spa experience, or hotel-selected perk valued at approximately $75. Total benefit value approximately $100 at most properties. VIP status, upgrade, continental breakfast for two, free wifi, late checkout, best rate guarantee all included.',
+   minStay:null,rate:'Best Available Rate at visainfinitehotels.com',
+   booking:'Book at visainfinitehotels.com with a Visa Infinite card. Contact the hotel in advance to request your preferred 8th amenity type (F&B credit vs. spa experience).',
+   zachNote:'Worth checking visainfinitehotels.com before booking any luxury hotel — if the property is on the list, you\'re eligible for ~$100 in amenities with a card you likely already carry. The 8th amenity is property-specific; call ahead to request F&B credit vs. a spa experience based on your preference.'},
+  {id:26,name:'Visa Signature® — Luxury Hotel Collection',program:'Visa',type:'card',icon:'💳',
+   keywords:'visa signature luxury hotel collection',
+   brands:['Select Visa Luxury Hotel Collection properties at visasignaturehotels.com','Available to ALL Visa Signature cardholders — Chase, US Bank, Bank of America, and others','Separate (and somewhat smaller) list from Visa Infinite properties'],
+   perks:['breakfast','upgrade','credit','wifi','checkinout','vip'],
+   credit:'$25 daily F&B credit',
+   creditDetail:'$25 daily F&B credit throughout the stay. VIP guest status. Room upgrade on arrival when available. Continental breakfast for two daily. Free wifi. Late checkout up to 3pm upon request. Best available rate guarantee. 7 consistent benefits at every qualifying property.',
+   minStay:null,rate:'Best Available Rate at visasignaturehotels.com',
+   booking:'Book at visasignaturehotels.com with any Visa Signature card. Most mid-to-premium Visa cards qualify — check your card network designation.',
+   zachNote:'This is one of the most underutilized programs in travel — many people have Visa Signature cards and don\'t know this benefit exists. Check visasignaturehotels.com and your card network before ANY luxury hotel booking. The breakfast and upgrade alone justify checking.'},
+  {id:30,name:'Bilt Home Away From Home',program:'Bilt Rewards',type:'bilt',icon:'🏠',
+   keywords:'bilt home away from home hafh rewards virtuoso gold platinum',
+   brands:['2,000+ curated luxury properties worldwide via Virtuoso partnership','Chain hotels booked as DIRECT bookings — earn hotel points + elite nights simultaneously','Independent luxury: Le Sirenuse (Positano), Raffles Singapore, Auberge du Soleil (Napa), Amangiri (Utah), Amanpulo (Philippines), Cheval Blanc (Paris)','Major chains: Ritz-Carlton, Park Hyatt, Waldorf Astoria, Rosewood, Four Seasons, Andaz','Access via Bilt Travel portal (Gold and Platinum status required — no Bilt card necessary)'],
+   perks:['breakfast','upgrade','credit','checkinout','points','concierge'],
+   credit:'Up to $100 on-property amenity',
+   creditDetail:'Up to $100 on-property credit or equivalent amenity per qualifying stay. Complimentary breakfast daily. Room upgrade when available. Early check-in and late checkout when available. Earn 2x Bilt Points on all bookings. For Bilt Palladium cardholders: additional up to $400/year in hotel credits stack on top of these Virtuoso perks.',
+   minStay:'2 nights when paying with Bilt Cash or Credits; no minimum for cash bookings',
+   rate:'Best Available Rate via Bilt Travel portal',
+   booking:'Book via Bilt Travel portal. Gold or Platinum Bilt status required — no card needed. Rent payments count toward Bilt status milestones.',
+   zachNote:'The direct-booking status for chain hotels is the killer feature that separates Bilt HAFH from every other card portal: you get Virtuoso-level perks AND the stay counts toward Hyatt Globalist or Marriott Titanium qualification simultaneously. Almost no other program offers this. If you pay rent, you should be earning Bilt points.'},
+  {id:27,name:'Virtuoso',program:'Standalone — book via travel advisor',type:'standalone',icon:'🌍',
+   keywords:'virtuoso standalone travel advisor independent',
+   brands:['2,000+ member hotels and resorts worldwide — the gold standard luxury hotel network','Major coverage: Four Seasons, Rosewood, Aman, Six Senses, Belmond, Soneva, Small Luxury Hotels, Leading Hotels of the World, Design Hotels','Cruise lines: Silversea, Seabourn, Crystal, Cunard, Viking, Regent Seven Seas, Oceania, Azamara','Tour operators and safari companies also included in Virtuoso network'],
+   perks:['breakfast','upgrade','checkinout','vip','credit','concierge'],
+   credit:'Varies by property — typically $75–$200 in amenity value',
+   creditDetail:'On-property amenity value varies by property — typically $75–$200 in a combination of flexible credits, room upgrades, and complimentary breakfast. Full American breakfast (vs. continental with Amex FHR) at Four Seasons and many luxury independents. Cruise benefits: shipboard credits ($300–$1,000+ per voyage), shore excursions, specialty dining packages, pre-paid gratuities, and dedicated Virtuoso hosts on board.',
+   minStay:null,rate:'Best Available Rate via Virtuoso-affiliated advisor',
+   booking:'Must book through a Virtuoso-affiliated travel advisor — Classic Travel at classictravel.com/zachary qualifies. Cannot self-book at virtuoso.com without an advisor affiliation.',
+   zachNote:'Virtuoso is the gold standard for luxury hotel and cruise travel. The full breakfast at Four Seasons (vs. continental with Amex FHR) is a meaningful differentiation on longer stays. For cruises, Virtuoso benefits on Silversea or Seabourn voyages can include $1,000+ in shipboard credits plus exclusive cocktail parties — value that dwarfs any credit card perk.'},
 ];
  
 const CARD_P={
@@ -328,115 +701,181 @@ const CARD_NOTE={
   'none':'Virtuoso is your best self-serve option. All hotel chain programs accessible through a travel advisor like Classic Travel.',
 };
  
-let activeFilter='all',searchTerm='',compareSet=new Set();
+let activeFilter='all', searchTerm='', compareSet=new Set();
+const openRows=new Set(), aiCache={};
  
-function perkHtml(k){const m=PM[k];return `<span class="perk" style="background:${m.bg};color:${m.c};border-color:${m.bc}"><i class="ti ${m.icon}"></i>${m.label}</span>`;}
- 
-function bookBtn(p){
-  if(p.type==='card') return `<a class="btn btn-cc" href="${CC_URL}" target="_blank"><i class="ti ti-external-link"></i>Card options</a>`;
-  if(p.type==='bilt') return `<a class="btn btn-bilt" href="${BILT_URL}" target="_blank"><i class="ti ti-external-link"></i>Book via Bilt</a>`;
-  return `<a class="btn btn-book" href="${BOOK}" target="_blank"><i class="ti ti-external-link"></i>Book via Classic Travel</a>`;
+function perkHtml(k,full){
+  const m=PM[k];
+  if(full) return `<span class="mm-perk-pill" style="background:${m.bg};color:${m.c}">${m.icon} ${m.label}</span>`;
+  return `<span class="mm-perk" style="background:${m.bg};color:${m.c}">${m.icon} ${m.label}</span>`;
 }
- 
-function cardHtml(p){
+function bookBtn(p){
+  if(p.type==='card') return `<a class="mm-btn mm-btn-gold" href="${CC_URL}" target="_blank">View card options ↗</a>`;
+  if(p.type==='bilt') return `<a class="mm-btn mm-btn-blue" href="${BILT_URL}" target="_blank">Book via Bilt ↗</a>`;
+  return `<a class="mm-btn mm-btn-primary" href="${BOOK}" target="_blank">Book via Classic Travel ↗</a>`;
+}
+function rowHtml(p){
+  const t=TC[p.type];
+  const isOpen=openRows.has(p.id);
   const inC=compareSet.has(p.id);
-  return `<div class="card${inC?' selected':''}" id="c${p.id}">
-    <div class="card-head">
-      <div class="ci ${IC[p.type]}"><i class="ti ${p.icon}"></i></div>
-      <div style="flex:1;min-width:0"><div class="card-name">${p.name}</div><div class="card-prog">${p.program}</div></div>
-      <span class="tbadge ${TC[p.type].cls}">${TC[p.type].label}</span>
+  return `<div class="mm-row${isOpen?' open':''}${inC?' selected':''}" id="row-${p.id}">
+    <div class="mm-row-stripe ${t.stripe}"></div>
+    <div class="mm-row-summary" onclick="toggleRow(${p.id})">
+      <div class="mm-row-icon ${t.icon}">${p.icon}</div>
+      <div class="mm-row-center">
+        <div class="mm-row-left">
+          <div class="mm-row-name">${p.name}</div>
+          <div class="mm-row-prog">${p.program}</div>
+        </div>
+        <div class="mm-row-perks">${p.perks.slice(0,5).map(k=>perkHtml(k,false)).join('')}</div>
+      </div>
+      <div class="mm-row-right">
+        ${p.credit?`<div class="mm-row-credit">${p.credit.split('+')[0].trim().split('(')[0].trim()}</div>`:''}
+        <span class="mm-type-badge ${t.badge}">${t.label}</span>
+        <svg class="mm-chevron" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
     </div>
-    ${p.credit||p.minStay?`<div class="card-meta">${p.credit?'<i class="ti ti-currency-dollar" style="font-size:10px;vertical-align:-1px"></i> '+p.credit:''}${p.credit&&p.minStay?' &middot; ':''}${p.minStay?'<i class="ti ti-clock" style="font-size:10px;vertical-align:-1px"></i> '+p.minStay:''}</div>`:''}
-    <div class="card-notes">${p.notes}</div>
-    <div class="perks">${p.perks.map(perkHtml).join('')}</div>
-    <div class="actions">
-      ${bookBtn(p)}
-      <button class="btn btn-cmp${inC?' in':''}" onclick="toggleCompare(${p.id})">${inC?'<i class="ti ti-check"></i>Added':'<i class="ti ti-plus"></i>Compare'}</button>
+    <div class="mm-row-detail">
+      <div class="mm-detail-inner">
+        <div class="mm-detail-grid">
+          <div>
+            <div class="mm-detail-label">Brands &amp; Properties Covered</div>
+            <div class="mm-detail-value"><div class="mm-brands">${p.brands.map(b=>`<span class="mm-brand-chip">${b}</span>`).join('')}</div></div>
+          </div>
+          <div>
+            <div class="mm-detail-label">Credit &amp; Value Detail</div>
+            <div class="mm-detail-value">${p.creditDetail}</div>
+          </div>
+          <div>
+            <div class="mm-detail-label">All Perks Included</div>
+            <div class="mm-perk-full">${p.perks.map(k=>perkHtml(k,true)).join('')}</div>
+            ${p.minStay?`<div style="margin-top:.65rem;font-size:12px;color:var(--gray-dark)">⏱ <strong>Min stay:</strong> ${p.minStay}</div>`:''}
+            ${p.rate?`<div style="margin-top:.3rem;font-size:12px;color:var(--gray-dark)">🏷 <strong>Rate:</strong> ${p.rate}</div>`:''}
+          </div>
+        </div>
+        <div style="margin-bottom:.85rem">
+          <div class="mm-detail-label">How to Book</div>
+          <div class="mm-detail-value">${p.booking}</div>
+        </div>
+        ${p.zachNote?`<div class="mm-zach"><div class="mm-detail-label" style="border-color:var(--gold-mid);color:#8b6000">⭐ Zach's Take</div><div class="mm-detail-value" style="font-style:italic">${p.zachNote}</div></div>`:''}
+        <div class="mm-miles-wrap">
+          <div class="mm-miles-bar" id="mbar-${p.id}" onclick="toggleMiles(${p.id})">
+            <div class="mm-miles-avatar"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div class="mm-miles-title">Ask <em>MILES</em> — Insider Booking Tips</div>
+            <div class="mm-miles-sub">Monkey Miles AI · Claude</div>
+            <svg class="mm-miles-chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="mm-miles-body" id="mbody-${p.id}"><p style="color:var(--gray)">Loading<span class="mm-dots"><span></span><span></span><span></span></span></p></div>
+        </div>
+        <div class="mm-detail-actions">
+          ${bookBtn(p)}
+          <button class="mm-btn mm-btn-ghost${inC?' in-compare':''}" onclick="event.stopPropagation();toggleCompare(${p.id})">${inC?'✓ Added to compare':'+ Add to compare'}</button>
+        </div>
+      </div>
     </div>
   </div>`;
 }
+function toggleRow(id){
+  const el=document.getElementById(`row-${id}`);
+  if(openRows.has(id)){openRows.delete(id);el.classList.remove('open');}
+  else{openRows.add(id);el.classList.add('open');}
+}
+async function toggleMiles(id){
+  const bar=document.getElementById(`mbar-${id}`);
+  const body=document.getElementById(`mbody-${id}`);
+  const isOpen=bar.parentElement.classList.contains('mm-miles-open');
+  if(isOpen){bar.parentElement.classList.remove('mm-miles-open');return;}
+  bar.parentElement.classList.add('mm-miles-open');
+  if(aiCache[id]){body.innerHTML=aiCache[id];return;}
+  const p=PROGRAMS.find(x=>x.id===id);
+  body.innerHTML=`<p style="color:var(--gray)">Asking Miles<span class="mm-dots"><span></span><span></span><span></span></span></p>`;
+  const prompt=`You are Miles, a knowledgeable and friendly travel advisor for Monkey Miles (monkeymiles.boardingarea.com) by Zachary Burr Abel.
  
-function secLbl(txt){return `<div class="sec-lbl">${txt}</div>`;}
+A user is reading about the "${p.name}" program. Give 3–4 punchy paragraphs of insider advice in Miles' voice — enthusiastic, specific, like a well-traveled friend. Cover: what makes this program worth using, real-world perk value, exactly how to book and what to say, and one insider tip or gotcha to watch for.
  
+Program: ${p.program} | Type: ${p.type} | Credit: ${p.creditDetail} | Booking: ${p.booking} | Zach's note: ${p.zachNote||'none'}
+ 
+Use only <p> and <strong> tags. No headers, no bullets. End with a booking call-to-action for the right channel (Classic Travel for hotel programs, Monkey Miles card page for card programs, Bilt for Bilt).`;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,messages:[{role:'user',content:prompt}]})});
+    const data=await res.json();
+    const text=data.content?.[0]?.text||'<p>Miles is unavailable right now — try again.</p>';
+    aiCache[id]=text;body.innerHTML=text;
+  }catch(e){body.innerHTML='<p>Miles is taking a quick break. Refresh and try again.</p>';}
+}
+function secLbl(txt){return `<div class="mm-sec">${txt}</div>`;}
 function renderBrowse(){
   const q=searchTerm.toLowerCase();
-  const filtered=P.filter(p=>{
+  const filtered=PROGRAMS.filter(p=>{
     const mt=activeFilter==='all'||p.type===activeFilter;
-    const ms=!q||[p.name,p.program,p.hotels,p.notes,...p.perks].join(' ').toLowerCase().includes(q);
+    const ms=!q||[p.name,p.program,...p.brands,p.creditDetail,p.booking,p.zachNote||'',p.keywords||''].join(' ').toLowerCase().includes(q);
     return mt&&ms;
   });
-  document.getElementById('count-bar').textContent=`Showing ${filtered.length} of ${P.length} programs`;
+  document.getElementById('count-bar').textContent=`Showing ${filtered.length} of ${PROGRAMS.length} programs — click any row to expand full details`;
   const hotels=filtered.filter(p=>p.type==='hotel');
   const cards=filtered.filter(p=>p.type==='card');
   const bilt=filtered.filter(p=>p.type==='bilt');
   const standalone=filtered.filter(p=>p.type==='standalone');
   let html='';
-  if(hotels.length&&(activeFilter==='all'||activeFilter==='hotel')){html+=secLbl(`Hotel chain programs — ${hotels.length}`);html+=`<div class="grid">${hotels.map(cardHtml).join('')}</div>`;}
-  if(cards.length&&(activeFilter==='all'||activeFilter==='card')){html+=secLbl(`Credit card programs — ${cards.length}`);html+=`<div class="grid">${cards.map(cardHtml).join('')}</div>`;}
-  if(bilt.length&&(activeFilter==='all'||activeFilter==='bilt')){html+=secLbl('Bilt Home Away From Home');html+=`<div class="grid">${bilt.map(cardHtml).join('')}</div>`;}
-  if(standalone.length&&(activeFilter==='all'||activeFilter==='standalone')){html+=secLbl('Standalone programs');html+=`<div class="grid">${standalone.map(cardHtml).join('')}</div>`;}
-  if(!filtered.length) html=`<div class="no-res"><i class="ti ti-search-off" style="font-size:36px;display:block;margin-bottom:12px"></i>No programs match your search.</div>`;
+  if(hotels.length&&(activeFilter==='all'||activeFilter==='hotel')){html+=secLbl(`Hotel chain programs — ${hotels.length}`);html+=hotels.map(rowHtml).join('');}
+  if(cards.length&&(activeFilter==='all'||activeFilter==='card')){html+=secLbl(`Credit card programs — ${cards.length}`);html+=cards.map(rowHtml).join('');}
+  if(bilt.length&&(activeFilter==='all'||activeFilter==='bilt')){html+=secLbl('Bilt Home Away From Home');html+=bilt.map(rowHtml).join('');}
+  if(standalone.length&&(activeFilter==='all'||activeFilter==='standalone')){html+=secLbl('Standalone programs');html+=standalone.map(rowHtml).join('');}
+  if(!filtered.length)html='<div class="mm-empty">No programs match your search.</div>';
   document.getElementById('browse-out').innerHTML=html;
 }
- 
 function renderCardFinder(){
   const v=document.getElementById('card-select').value;
   const out=document.getElementById('cf-results');
-  if(!v){out.innerHTML='<div class="tray-hint">Choose a card above.</div>';return;}
+  if(!v){out.innerHTML='<p style="font-size:13px;color:var(--gray)">Choose a card above.</p>';return;}
   const ids=CARD_P[v]||[];
-  const matched=P.filter(p=>ids.includes(p.id));
-  const hotels=P.filter(p=>p.type==='hotel');
+  const matched=PROGRAMS.filter(p=>ids.includes(p.id));
+  const hotels=PROGRAMS.filter(p=>p.type==='hotel');
   let html='';
-  if(matched.length){html+=secLbl('Programs included with your card / status');html+=`<div class="grid">${matched.map(cardHtml).join('')}</div>`;}
-  html+=secLbl(`Also accessible via travel advisor — ${hotels.length} hotel chain programs`);
-  html+=`<div style="font-size:12px;color:var(--gray);margin-bottom:12px;line-height:1.65">${CARD_NOTE[v]}</div>`;
-  html+=`<div class="grid">${hotels.slice(0,3).map(cardHtml).join('')}</div>`;
-  html+=`<div style="margin-top:10px"><button class="btn" onclick="document.querySelector('[data-tab=browse]').click();document.querySelector('[data-filter=hotel]').click()">View all ${hotels.length} hotel chain programs →</button></div>`;
+  if(matched.length){html+=secLbl('Programs with your card / status');html+=matched.map(rowHtml).join('');}
+  html+=secLbl(`Also via travel advisor — ${hotels.length} hotel chain programs`);
+  html+=`<p style="font-size:13px;color:var(--gray-dark);margin-bottom:1rem;line-height:1.6">${CARD_NOTE[v]}</p>`;
+  html+=hotels.slice(0,4).map(rowHtml).join('');
+  html+=`<div style="margin-top:1rem"><button class="mm-btn mm-btn-ghost" onclick="document.querySelector('[data-tab=browse]').click();document.querySelector('[data-filter=hotel]').click()">View all ${hotels.length} hotel chain programs →</button></div>`;
   out.innerHTML=html;
 }
- 
 function toggleCompare(id){
   if(compareSet.has(id)){compareSet.delete(id);}else{if(compareSet.size>=4)return;compareSet.add(id);}
   renderBrowse();renderTray();renderCompareGrid();
 }
- 
 function renderTray(){
   const chips=document.getElementById('tray-chips');
   const btn=document.getElementById('do-compare');
   const clr=document.getElementById('clear-compare');
-  if(!compareSet.size){chips.innerHTML='<span class="tray-hint">Add programs from Browse to compare (up to 4)</span>';btn.style.display='none';clr.style.display='none';return;}
-  chips.innerHTML=[...compareSet].map(id=>{const p=P.find(x=>x.id===id);return `<span class="chip">${p.name.replace(/[®℠™]/g,'')}<button onclick="toggleCompare(${id})" aria-label="Remove">×</button></span>`;}).join('');
-  btn.style.display=compareSet.size>=2?'block':'none';
-  clr.style.display='block';
+  if(!compareSet.size){chips.innerHTML='<span class="mm-tray-hint">Add programs to compare — up to 4</span>';btn.style.display='none';clr.style.display='none';return;}
+  chips.innerHTML=[...compareSet].map(id=>{const p=PROGRAMS.find(x=>x.id===id);return `<span class="mm-chip">${p.name.replace(/[®℠™]/g,'')}<button onclick="toggleCompare(${id})">×</button></span>`;}).join('');
+  btn.style.display=compareSet.size>=2?'inline-flex':'none';clr.style.display='block';
 }
- 
 function renderCompareTable(){
-  if(compareSet.size<2){document.getElementById('compare-output').innerHTML='<div style="font-size:12px;color:var(--gray-d);padding:.5rem 0">Select at least 2 programs.</div>';return;}
-  const sel=P.filter(p=>compareSet.has(p.id));
+  if(compareSet.size<2){document.getElementById('compare-output').innerHTML='<p style="font-size:13px;color:var(--gray)">Select at least 2 programs.</p>';return;}
+  const sel=PROGRAMS.filter(p=>compareSet.has(p.id));
   const allPerks=['breakfast','upgrade','credit','wifi','checkinout','points','vip','nowalk','concierge'];
-  const th=`<th>Perk</th>`+sel.map(p=>`<th>${p.name.replace(/[®℠™]/g,'')}</th>`).join('');
-  let rows=`<tr><td>Credit</td>${sel.map(p=>`<td style="color:#CCC;font-size:11px">${p.credit||'—'}</td>`).join('')}</tr>`;
-  rows+=`<tr><td>Min stay</td>${sel.map(p=>`<td style="color:#CCC;font-size:11px">${p.minStay||'None'}</td>`).join('')}</tr>`;
-  rows+=`<tr><td>Type</td>${sel.map(p=>`<td><span class="tbadge ${TC[p.type].cls}">${TC[p.type].label}</span></td>`).join('')}</tr>`;
-  allPerks.forEach(pk=>{const m=PM[pk];rows+=`<tr><td>${m.label}</td>${sel.map(p=>`<td>${p.perks.includes(pk)?'<i class="ti ti-check" style="color:#3ABFB1;font-size:15px"></i>':'<i class="ti ti-minus" style="color:#333;font-size:15px"></i>'}</td>`).join('')}</tr>`;});
-  rows+=`<tr><td>Hotels</td>${sel.map(p=>`<td style="font-size:10px;color:#777;line-height:1.5">${p.hotels}</td>`).join('')}</tr>`;
-  document.getElementById('compare-output').innerHTML=`<div class="cmp-wrap"><table class="cmp-tbl"><thead><tr>${th}</tr></thead><tbody>${rows}</tbody></table></div>`;
+  const th='<th>Feature</th>'+sel.map(p=>`<th>${p.name.replace(/[®℠™]/g,'')}</th>`).join('');
+  let rows=`<tr><td>Credit</td>${sel.map(p=>`<td style="font-size:11px">${p.credit||'—'}</td>`).join('')}</tr>`;
+  rows+=`<tr><td>Min stay</td>${sel.map(p=>`<td style="font-size:11px">${p.minStay||'None'}</td>`).join('')}</tr>`;
+  rows+=`<tr><td>Rate</td>${sel.map(p=>`<td style="font-size:11px">${p.rate||'BAR'}</td>`).join('')}</tr>`;
+  rows+=`<tr><td>Type</td>${sel.map(p=>`<td><span class="mm-type-badge ${TC[p.type].badge}">${TC[p.type].label}</span></td>`).join('')}</tr>`;
+  allPerks.forEach(pk=>{rows+=`<tr><td>${PM[pk].label}</td>${sel.map(p=>`<td>${p.perks.includes(pk)?'<span style="color:var(--green);font-weight:700;font-size:15px">✓</span>':'<span style="color:#ddd">—</span>'}</td>`).join('')}</tr>`;});
+  rows+=`<tr><td>Brands</td>${sel.map(p=>`<td style="font-size:10px;color:var(--gray);line-height:1.5">${p.brands.slice(0,3).join(', ')}${p.brands.length>3?' …':''}</td>`).join('')}</tr>`;
+  document.getElementById('compare-output').innerHTML=`<div class="mm-cmp-wrap"><table class="mm-cmp-tbl"><thead><tr>${th}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
- 
-function renderCompareGrid(){document.getElementById('compare-grid').innerHTML=P.map(cardHtml).join('');}
- 
+function renderCompareGrid(){document.getElementById('compare-grid').innerHTML=PROGRAMS.map(rowHtml).join('');}
 function renderPropLookup(){
   const q=document.getElementById('prop-search').value.trim().toLowerCase();
   const out=document.getElementById('prop-results');
-  if(q.length<2){out.innerHTML='<div class="tray-hint" style="font-size:12px;color:var(--gray-d);padding:.5rem 0">Type a hotel name or brand to find which VIP programs apply.</div>';return;}
-  const matched=P.filter(p=>p.hotels.toLowerCase().includes(q)||p.program.toLowerCase().includes(q)||p.name.toLowerCase().includes(q));
-  if(!matched.length){out.innerHTML=`<div class="tray-hint" style="font-size:12px;color:var(--gray-d);padding:.5rem 0">No programs found for "<strong style="color:#CCC">${q}</strong>". Try Ritz-Carlton, Waldorf, or Four Seasons.</div>`;return;}
-  out.innerHTML=`<div class="count" style="margin-bottom:10px">${matched.length} program${matched.length>1?'s':''} found for "${q}"</div><div class="grid">${matched.map(cardHtml).join('')}</div>`;
+  if(q.length<2){out.innerHTML='<p style="font-size:13px;color:var(--gray)">Type a hotel name or brand to find which VIP programs apply.</p>';return;}
+  const matched=PROGRAMS.filter(p=>[...p.brands,p.name,p.program,p.keywords||''].join(' ').toLowerCase().includes(q));
+  if(!matched.length){out.innerHTML=`<p style="font-size:13px;color:var(--gray)">No programs found for "<strong>${q}</strong>". Try Ritz-Carlton, Waldorf, or Four Seasons.</p>`;return;}
+  out.innerHTML=`<div class="mm-count">${matched.length} program${matched.length>1?'s':''} cover "${q}"</div>`+matched.map(rowHtml).join('');
 }
- 
-document.querySelectorAll('.tab').forEach(t=>{
+document.querySelectorAll('.mm-tab').forEach(t=>{
   t.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.mm-tab').forEach(x=>x.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
     document.getElementById('tab-'+t.dataset.tab).classList.add('active');
@@ -444,9 +883,9 @@ document.querySelectorAll('.tab').forEach(t=>{
   });
 });
 document.getElementById('search').addEventListener('input',e=>{searchTerm=e.target.value;renderBrowse();});
-document.querySelectorAll('.fbtn').forEach(b=>{
+document.querySelectorAll('.mm-fbtn').forEach(b=>{
   b.addEventListener('click',()=>{
-    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.mm-fbtn').forEach(x=>x.classList.remove('active'));
     b.classList.add('active');activeFilter=b.dataset.filter;renderBrowse();
   });
 });
